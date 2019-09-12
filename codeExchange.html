@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1,user-scalable=no">
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone=no" name="format-detection" />
+    <meta content="email=no" name="format-detection" />
+    <title>积分兑换记录</title>
+    <link rel="stylesheet" href="public/resource/css/weui.min.css">
+    <link rel="stylesheet" href="public/resource/css/jquery-weui.css">
+    <link href="public/common/common.css" rel="stylesheet">
+    <link href="public/resource/css/icon.css" rel="stylesheet">
+    <link href="css/codeExchange.css" rel="stylesheet">
+    <script src="public/resource/js/jquery.min.js"></script>
+    <script src="public/resource/js/jquery-weui.js"></script>
+    <script src="public/resource/js/vue.min.js"></script>
+    <script src="js/codeOrder.js"></script>
+</head>
+
+<body>
+    <div class="viewports" id="app">
+        <header class="head-wrap ft-14">
+            <div class="head-content color-bg-ff">
+                <a href="redeem.html">
+                    <i class="icon icon-109"></i>
+                </a>
+                <span class="font"></span>
+            </div>
+        </header>
+        <!-- 订单状态 -->
+        <div class="favor-header-bar">
+            <ul class="tabs">
+                <li class="default">
+                    <a href="codeExchange.html" hidefocus="true">全部</a>
+                </li>
+                <li>
+                    <a href="codeWait.html" hidefocus="true">待发货</a>
+                </li>
+                <li>
+                    <a href="codeRecepit.html" hidefocus="true">待收货</a>
+                </li>
+                <li>
+                    <a href="codeEvaluate.html" hidefocus="true">待评价</a>
+                </li>
+            </ul>
+        </div>
+        <!-- slideTo tab -->
+        <div class="swiper-container">
+            <div class="item-product" v-for="item in orderList">
+                <div class="wecell">
+                    <div class="left ft-14">
+                        <img class="logoshop" src="images/shop.png" />
+                        <span class="shopName">{{item.storeName}}</span>
+                    </div>
+                    <div class="right ft-12 status">{{item.status==1? "待付款" : item.status==2? "待收货" : item.status==3? "已完成" : item.status==4? "退换货" : item.status==5?
+                        "已取消" : (item.status==6? "待发货" : "待评价")}}</div>
+                </div>
+                <div class="p-img-name" v-for="item in item.goodsList">
+                    <div class="pro-img">
+                        <a :href="'productDetail.html?id='+item.gid" class="dis">
+                            <img :src="item.examplePic" />
+                        </a>
+                    </div>
+                    <div class="pro-info-box">
+                        <div class="pro-name">
+                            <div class="clamp">{{item.goodsName}}</div>
+                            <div class="clamp">{{item.gdMsg}}</div>
+                        </div>
+                        <div class="pro-skus ft-12">
+                            <div>积分兑换：{{item.score}}</div>
+                        </div>
+                    </div>
+                    <div class="pro-price">
+                        <div class="ft-12">x{{item.size}}</div>
+                    </div>
+                </div>
+                <div class="p-list-product">
+                    <div class="weui-cell" v-if="item.status==1">
+                        <a class="operate fff" :href="'codeDetail.html?orderId='+item.orderId">订单详情</a>
+                        <a class="operate fff" href="javascript:;" @click="cancelOrder(item.orderId)">取消订单</a>
+                        <a class="operate ooo" :href="'codeDetail.html?orderId='+item.orderId">去兑换</a>
+                    </div>
+                    <div class="weui-cell" v-else-if="item.status==2">
+                        <a class="operate fff" :href="'codeDetail.html?orderId='+item.orderId">订单详情</a>
+                        <a class="operate fff" href="javascript:;" @click="seelogistics(item.orderId)">查看物流</a>
+                        <!--<a class="operate fff" href="javascript:;" @click="applyTui(item.orderId)">退换货</a>-->
+                        <a class="operate ooo" href="javascript:;" @click="confirmProduct(item.orderId)">确认收货</a>
+                    </div>
+                    <div class="weui-cell" v-else-if="item.status==3">
+                        <a class="operate fff" :href="'codeDetail.html?orderId='+item.orderId">订单详情</a>
+                    </div>
+                    <div class="weui-cell" v-else-if="item.status==4">
+                        <a class="operate fff" :href="'codeDetail.html?orderId='+item.orderId">订单详情</a>
+                        <a class="operate fff" href="javascript:;" @click="seelogistics(item.orderId)">查看物流</a>
+                        <a class="operate ooo" href="javascript:;" @click="confirmProduct(item.orderId)">确认收货</a>
+                    </div>
+                    <div class="weui-cell" v-else-if="item.status==5">
+                        <a class="operate fff" :href="'codeDetail.html?orderId='+item.orderId">订单详情</a>
+                    </div>
+                    <div class="weui-cell" v-else-if="item.status==6">
+                        <a class="operate fff" :href="'codeDetail.html?orderId='+item.orderId">订单详情</a>
+                    </div>
+                    <div class="weui-cell" v-else>
+                        <a class="operate fff" :href="'codeDetail.html?orderId='+item.orderId">订单详情</a>
+                        <a class="operate ooo" href="javascript:;" @click="goEvaluate(item.orderId)">去评价</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+    </div>
+</body>
+
+</html>

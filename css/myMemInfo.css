@@ -1,0 +1,179 @@
+.ahead {
+    width: 100%;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    background: #FE9844;
+    color: #fff;
+}
+
+.ahead span {
+    flex: 1;
+    display: inline-block;
+    width: 33.33%;
+    font-size: 14px;
+    text-align: center;
+}
+
+.ahead img {
+    width: 15px;
+    height: 13px;
+    margin-bottom: -1px;
+    margin-left: 4px;
+}
+
+.searchWrap {
+    height: 55px;
+    display: flex;
+}
+
+.searchWrap .search-bar {
+    padding: 12px;
+    display: flex;
+    box-sizing: border-box;
+    background-color: #fff;
+    position: fixed;
+    z-index: 10;
+    width: 100%;
+    max-width: 6.4rem;
+}
+
+.searchWrap .search-bar form {
+    flex: auto;
+}
+
+.searchWrap .search-bar-inner {
+    border-radius: 20px;
+    width: 85%;
+    height: 100%;
+    position: relative;
+    display: flex;
+    background: #f5f5f5;
+}
+
+.searchWrap .search-bar-input {
+    box-sizing: border-box;
+    width: 100%;
+    height: 30px;
+    background-color: #f4f4f4;
+    border-radius: 0 20px 20px 0px;
+    font-size: 0.14rem;
+    padding-left: 0.1rem;
+}
+
+.searchWrap .search-bar-inner .icon {
+    padding: 5px 10px 0px 12px;
+    line-height: 20px;
+    font-size: 18px;
+    color: #878686;
+}
+
+.chooseMonth {
+    width: 14%;
+    height: 24px;
+    line-height: 24px;
+    background: #F5F5F7;
+    color: #FE9844;
+    border-radius: 5px;
+    font-size: 14px;
+    text-align: center;
+    margin-left: 10px;
+}
+
+/*头部*/
+
+section {
+    margin-top: 8px;
+}
+
+.user-info-item {
+    width: 100%;
+    background: #fff;
+    margin-bottom: 10px;
+}
+
+.info-main {
+    width: 100%;
+    height: 60px;
+    padding-left: 15px;
+    padding-right: 15px;
+    border-bottom: 1px solid #F5F5F7;
+}
+
+.userInfo {
+    padding-top: 5px;
+}
+
+.user-img {
+    width: 36px;
+    height: 36px;
+    float: left;
+    margin-top: 5px;
+}
+
+.user-name {
+    padding-left: 15px;
+    font-size: 14px;
+    color: #292929;
+}
+
+.user-level {
+    color: #FFAA00;
+    border: 1px solid rgba(255, 170, 0, 1);
+    border-radius: 10px;
+    font-size: 10px;
+    padding: 1px 3px;
+}
+
+.showInfo {
+    color: #B8B6B6;
+    font-size: 12px;
+    line-height: 30px;
+}
+
+.showInfo span {
+    padding-left: 15px;
+}
+
+.user-comment {
+    width: 100%;
+    height: 55px;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+}
+
+.user-comment .item-money {
+    flex: 1;
+    width: 33.3%;
+    height: 55px;
+    line-height: 20px;
+    padding-top: 8px;
+    text-align: center;
+}
+
+.border {
+    border-right: 1px solid #F5F5F7;
+}
+
+.money {
+    color: #FF1010;
+    font-size: 14px;
+}
+
+.title {
+    color: #B8B6B6;
+    font-size: 12px;
+}
+
+.layui-input{
+    width: 20%;
+    height: 20px;
+    text-align: center;
+    color: #fff;
+    background: #FE9844;
+}
+
+.layui-input::-webkit-input-placeholder{
+    color: #fff;
+}

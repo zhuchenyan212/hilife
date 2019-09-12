@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1,user-scalable=no">
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone=no" name="format-detection" />
+    <meta content="email=no" name="format-detection" />
+    <title>新增收货地址</title>
+    <link rel="stylesheet" href="public/resource/css/weui.min.css">
+    <link rel="stylesheet" href="public/resource/css/jquery-weui.css">
+    <link href="public/common/common.css" rel="stylesheet">
+    <link href="public/resource/css/icon.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="public/resource/css/cssreset-min.css">
+    <link href="css/userInfo.css" rel="stylesheet">
+    <script src="public/resource/js/jquery.min.js"></script>
+    <script src="public/resource/js/jquery.citys.js"></script>
+    <script src="public/resource/js/jquery-weui.js"></script>
+    <script src="js/addAddress.js"></script>
+    <style>
+        #demo3 {
+            width: 100%;
+            height: 54px;
+        }
+
+        #demo3 select {
+            width: 18%;
+            height: 27px;
+            margin-top: 13px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="viewports">
+        <div class="container">
+            <div class="my_section">
+                <div class="my_cate">
+                    <a class="weui-cell_access">
+                        <div class="weui-cell__bd">收货人</div>
+                        <div class="weui-cell__ft_in-access">
+                            <input type="text" name="username" class="address username" placeholder="请输入收货人" />
+                        </div>
+                    </a>
+                    <a class="weui-cell_access">
+                        <div class="weui-cell__bd">联系方式</div>
+                        <div class="weui-cell__ft_in-access">
+                            <input type="number" name="number" class="address number" placeholder="请输入手机号"
+                                maxlength="11" />
+                        </div>
+                    </a>
+                    <a class="weui-cell_access">
+                        <div class="weui-cell__bd">地区</div>
+                        <div id="select" style="position: relative;width: 90% !important;text-align: right">
+                            <div id="demo3" class="citys">
+                                <select name="province"></select>
+                                <select name="city"></select>
+                                <select name="area"></select>
+                                <select name="town"></select>
+                            </div>
+                        </div>
+                    </a>
+                    <a class="weui-cell_access">
+                        <div class="weui-cell__bd">详细地址</div>
+                        <div class="weui-cell__ft_in-access">
+                            <input type="text" name="detailed" class="address detailed" placeholder="请输入详细地址" />
+                        </div>
+                    </a>
+                </div>
+                <div class="btnwrap">
+                    <div class="confirm">确认</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

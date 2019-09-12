@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1,user-scalable=no">
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone=no" name="format-detection" />
+    <meta content="email=no" name="format-detection" />
+    <title>购物车</title>
+    <link rel="stylesheet" href="public/resource/css/weui.min.css">
+    <link rel="stylesheet" href="public/resource/css/jquery-weui.css">
+    <link href="public/common/common.css" rel="stylesheet">
+    <link href="css/shoppingCart.css" rel="stylesheet">
+    <script src="public/resource/js/jquery.min.js"></script>
+    <script src="public/resource/js/jquery-weui.js"></script>
+    <script src="public/resource/js/vue.min.js"></script>
+    <script src="js/shoppingCart.js"></script>
+</head>
+
+<body>
+    <div class="viewports" id="app">
+        <!-- 头部 -->
+        <!-- <div class="headwrap" @click="EditProduct()">
+            <span class="right Edit"
+                onclick="javascript:this.innerHTML=(this.innerHTML=='编辑商品'?'完成':'编辑商品');">编辑商品</span>
+        </div> -->
+        <!-- product -->
+        <section>
+            <div id="cartBox">
+                <div class="cart-list">
+                    <div class="c-item" v-for="item in storeList">
+                        <div class="shop-name">
+                            <img src="images/shop.png" />
+                            <span class="shopName">{{item.storeName}}</span>
+                        </div>
+                        <div class="c-main" v-for="(item,index) in item.goodsList">
+                            <div class="flex checkbox-group">
+                                <label class="weui-check__label item-cb check-label">
+                                    <input class="check check-one pcheckBox" type="checkbox" :value="item.size"
+                                        :data-id="item.carId" :data-price="item.price" :data-size="item.size"
+                                        @click="chooseOne(item.carId,item.price,item.size,$event)" checked>
+                                    <img class="checkicon" src="images/c_checkbox_on.png">
+                                </label>
+                            </div>
+                            <div class="pro-img">
+                                <a :href="'productDetail.html?id='+item.carId">
+                                    <img :src="item.examplePic">
+                                </a>
+                            </div>
+                            <div class="pro-info-box">
+                                <div class="pro-name">
+                                    <div class="clamps">{{item.goodsName}}</div>
+                                    <img class="deletItem" src="images/delete.png" @click="deletOne(item.carId)">
+                                </div>
+                                <div class="sku">{{item.detail}}</div>
+                                <div class="skus"><span class="s-pMoney">电子币：{{item.pMoney}}sp</span></div>
+                                <div class="p-unit">
+                                    <span class="s-price">￥{{item.price}}</span>
+                                    <div class="c-quantity">
+                                        <div class="quantity">
+                                            <span class="bnt font btn-reduce" :data-id="item.carId"
+                                                @click="reduce(item.carId,item.gdId,$event)">-</span>
+                                            <input type="number" class="int num" :value="item.size"
+                                                :data-id="item.carId" :data-pMoney="item.pMoney"
+                                                :data-price="item.price" :data-storeId="item.storeId" readonly>
+                                            <span class="bnt font btn-increse" :data-id="item.carId"
+                                                @click="add(item.carId,item.stock,item.gdId,$event)">+</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 结算 -->
+                <div class="ui-bottom">
+                    <div class="ui-action ui-submit">
+                        <div class="cart-cb">
+                            <label class="weui-check__label item-cb check-label">
+                                <input class="check check-all mainAll" type="checkbox" @click="chooseBox($event)">
+                                <img class="checkicon" src="images/c_checkbox_off.png">
+                                <div class="text left">全选</div>
+                            </label>
+                        </div>
+                        <div class="float-bar-right">
+                            <div class="amount-sum">
+                                <div class="c-amount">
+                                    <span class="price-alls">合计：<em>{{parseFloat(P).toFixed(2)}}sp</em></span>
+                                    <span class="price-all">合计：<em>￥{{parseFloat(S).toFixed(2)}}</em></span>
+                                </div>
+                            </div>
+                            <div class="button" @click="goConfirm()"><span>去结算</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- 底部 -->
+        <footer class="ui-footer">
+            <div class="ui-menu">
+                <div class="ui-menu-inner">
+                    <a href="index.html">
+                        <img class="icon" src="images/bott1.png" />
+                        <span class="ft-14">首页</span>
+                    </a>
+                </div>
+                <div class="ui-menu-inner">
+                    <a href="category.html">
+                        <img class="icon" src="images/bott3.png" />
+                        <span class="ft-14">分类</span>
+                    </a>
+                </div>
+                <div class="ui-menu-inner">
+                    <a href="shoppingCart.html">
+                        <img class="icon" src="images/bott6.png" />
+                        <span class="ft-14 act">购物车</span>
+                    </a>
+                </div>
+                <div class="ui-menu-inner">
+                    <a href="user.html">
+                        <img class="icon" src="images/bott7.png" />
+                        <span class="ft-14">个人中心</span>
+                    </a>
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>

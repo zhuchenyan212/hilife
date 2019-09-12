@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1,user-scalable=no">
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone=no" name="format-detection" />
+    <meta content="email=no" name="format-detection" />
+    <title>积分商城</title>
+    <link rel="stylesheet" href="public/resource/css/weui.min.css">
+    <link rel="stylesheet" href="public/resource/css/jquery-weui.css">
+    <link href="public/common/common.css" rel="stylesheet">
+    <link href="public/resource/css/icon.css" rel="stylesheet">
+    <link href="css/search.css" rel="stylesheet">
+    <script src="public/resource/js/jquery.min.js"></script>
+    <script src="public/resource/js/jquery-weui.js"></script>
+    <script src="public/resource/js/vue.min.js"></script>
+    <script src="js/codeShop.js"></script>
+</head>
+
+<body>
+    <div class="viewports" id="app">
+        <div class="container">
+            <!--商品搜索-->
+            <header class="searchWrap">
+                <div class="search-bar">
+                    <div class="search-bar-inner">
+                        <i class="icon-4 icon search"></i>
+                        <input type="text" name="searchWord" value="积分商城" class="search-bar-input" readonly />
+                    </div>
+                </div>
+            </header>
+            <!-- 货品列表目录 -->
+            <section class="ui-content">
+                <div class="new-search-tab">
+                    <div class="new-search-item active"><span @click="firstAll()">全部</span></div>
+                    <div class="new-search-item"><span @click="secondSales()">销量</span><img class="sales"
+                            src="images/off.png" /></div>
+                    <div class="new-search-item"><span @click="thirdline()">综合</span></div>
+                    <div class="new-search-item"><span @click="forthPrice()">价格</span><img class="prices"
+                            src="images/off.png" /></div>
+                </div>
+                <!--商品列表-->
+                <div class="search-list">
+                    <div class="search-list-wrap">
+                        <div class="p-list clear">
+                            <div class="p-item" v-for="item in goodsList">
+                                <a href="javascript:;">
+                                    <div><img class="bgImg" :src="item.examplePic" /></div>
+                                    <div class="p-name hit ellipsis">{{item.goodsName}}</div>
+                                    <div class="code lie">积分兑换：{{item.lowestScore}}</div>
+                                    <div class="last clear">
+                                        <div class="left ft-11" style="line-height: 25px;color:#878686;">
+                                            剩余库存：{{item.totalStock}}</div>
+                                        <div class="right opera" @click="products(item.gid,item.examplePic)">立即兑换</div>
+                                    </div>
+                                    <div class="ft-13 title ellipsis">{{item.username}}</div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <div class="popup-mask hide" @click="hideParam()"></div>
+        <!-- 商品详情弹层 -->
+        <div class="ui-spec-menu">
+            <div class="spec-menu-container">
+                <div @click="getData()">
+                    <div class="padd name-card clear">
+                        <div class="s-thumb">
+                            <img class="smallImg" :src="examplePic">
+                        </div>
+                        <div class="wrap">
+                            <div class="s-title ft-14 ellipsis goodsName">{{goodsDetail.goodsName}}</div>
+                            <div class="s-price">
+                                <span class="price lowestPrice">{{goodsDetail.lowestScore}}</span>
+                            </div>
+                            <div class="ft-12 start-Num over">剩余库存：<span
+                                    class="totalStock">{{goodsDetail.totalStock}}</span></div>
+                        </div>
+                    </div>
+                    <div class="semester-select clear" v-for="item in optionList">
+                        <p class="params">{{item.param}}</p>
+                        <ul class="color-cells">
+                            <li class="color-cell" v-for="item in item.options">
+                                <span class="item" @click="choose($event)">{{item}}</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="semester-select clear">
+                    <p class="left" style="margin-top: 8px;">数量</p>
+                    <div class="right">
+                        <div class="c-quantity">
+                            <div class="quantity color-3">
+                                <span class="bnt font btn-reduce" :data-id="goodsDetail.id">-</span>
+                                <input type="number" class="int font num" :data-id="goodsDetail.id" value="1">
+                                <span class="bnt font btn-increse" :data-id="goodsDetail.id">+</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ui-option btns">
+                    <div class="add" @click="add()">兑换</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

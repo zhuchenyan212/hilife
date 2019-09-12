@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1,user-scalable=no">
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone=no" name="format-detection" />
+    <meta content="email=no" name="format-detection" />
+    <title>首页</title>
+    <link rel="stylesheet" href="public/resource/css/weui.min.css">
+    <link rel="stylesheet" href="public/resource/css/jquery-weui.css">
+    <link href="public/common/common.css" rel="stylesheet">
+    <link href="public/resource/css/icon.css" rel="stylesheet">
+    <link href="public/resource/css/swiper.min.css" rel="stylesheet">
+    <link href="css/index.css" rel="stylesheet">
+    <script src="public/resource/js/jquery.min.js"></script>
+    <script src="public/resource/js/jquery-weui.js"></script>
+    <script src="public/resource/js/swiper.min.js"></script>
+    <script src="public/resource/js/vue.min.js"></script>
+    <script src="js/index.js"></script>
+</head>
+
+<body>
+    <div class="viewports">
+        <div class="container" id="app">
+            <!--商品搜索-->
+            <div class="search-wrap">
+                <div class="search-bar-wrap">
+                    <div class="search-form">
+                        <div class="search-bar" @click='search()'>
+                            <i class="icon-4 icon search"></i>
+                            <input class="search_input" type="text" placeholder="搜索" readonly />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--广告列表swiper-->
+            <div class="div-slider swiper-container">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide" v-for="item in bannerList">
+                        <a :href="item.url">
+                            <img class="bannerImg" :src="item.pic">
+                        </a>
+                    </div>
+                </div>
+                <!-- Add Pagination -->
+                <div class="swiper-pagination"></div>
+            </div>
+            <!--模块展示-->
+            <div class="ui-grids clear">
+                <a class="grid" v-for="item in areaList">
+                    <div class="ui_grid-img" @click="clickThis()">
+                        <img class="icon moImg" :src="item.pic" />
+                    </div>
+                    <div class="ui_grid-label ellipsis">{{item.typeName}}</div>
+                </a>
+            </div>
+            <!--推荐专区-->
+            <div class="notice_wrap">
+                <div class="div-vertical clear">
+                    <div class="left ft-16 clear">
+                        <span class="aTitle left"></span>
+                        <span class="right color-2a font">推荐专区</span>
+                    </div>
+                </div>
+            </div>
+            <!--推荐专区-->
+            <div class="suggestArea">
+                <ul class="activeBanner">
+                    <li v-for="item in recommendList">
+                        <a :href="item.url">
+                            <img :src="item.recommendAreaPic" />
+                        </a>
+                        <div>{{item.title}}</div>
+                    </li>
+                </ul>
+            </div>
+            <!--会员专区-->
+            <div class="notice_wrap">
+                <div class="div-vertical clear">
+                    <div class="left ft-16 clear">
+                        <span class="aTitle left"></span>
+                        <span class="right color-2a font">店主专区</span>
+                    </div>
+                </div>
+            </div>
+            <!--会员专区-->
+            <div class="p-wrap">
+                <div class="p-list clear">
+                    <div class="p-item" v-for="item in vipArea">
+                        <a :href="'productDetail.html?id='+item.gid">
+                            <div><img class="bgImg" :src="item.examplePic" /></div>
+                            <div class="p-name">{{item.goodsName}}</div>
+                            <div class="p-money">电子币：{{parseFloat(item.lowestPMoney).toFixed(2)}}sp</div>
+                            <div class="p-price clear">
+                                <div class="left ft-16">￥{{parseFloat(item.lowestPrice).toFixed(2)}}</div>
+                                <div class="right code">积分：{{item.lowestJifen}}</div>
+                            </div>
+                            <div class="ft-12 title ellipsis">{{item.businessName}}</div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!--商品专区-->
+            <div class="notice_wrap">
+                <div class="div-vertical clear">
+                    <div class="left ft-16 clear">
+                        <span class="aTitle left"></span>
+                        <span class="right color-2a font">商品专区</span>
+                    </div>
+                </div>
+            </div>
+            <!--商品专区-->
+            <div class="p-wrap">
+                <div class="p-list clear">
+                    <div class="p-item" v-for="item in goodsArea">
+                        <a :href="'productDetail.html?id='+item.gid">
+                            <div><img class="bgImg" :src="item.examplePic" /></div>
+                            <div class="p-name">{{item.goodsName}}</div>
+                            <div class="p-money">电子币：{{parseFloat(item.lowestPMoney).toFixed(2)}}sp</div>
+                            <div class="p-price clear">
+                                <div class="left ft-16">￥{{parseFloat(item.lowestPrice).toFixed(2)}}</div>
+                                <div class="right code">积分：{{item.lowestJifen}}</div>
+                            </div>
+                            <div class="ft-12 title ellipsis">{{item.businessName}}</div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!--特惠专区-->
+            <div class="notice_wrap">
+                <div class="div-vertical clear">
+                    <div class="left ft-16 clear">
+                        <span class="aTitle left"></span>
+                        <span class="right color-2a font">特惠专区</span>
+                    </div>
+                </div>
+            </div>
+            <!--特惠专区-->
+            <div class="p-wrap">
+                <div class="p-list clear">
+                    <div class="p-item" v-for="item in goodsList">
+                        <a :href="'productDetail.html?id='+item.gid">
+                            <div><img class="bgImg" :src="item.examplePic" /></div>
+                            <div class="p-name">{{item.goodsName}}</div>
+                            <div class="p-money">电子币：{{parseFloat(item.lowestPMoney).toFixed(2)}}sp</div>
+                            <div class="p-price clear">
+                                <div class="left ft-16">￥{{parseFloat(item.lowestPrice).toFixed(2)}}</div>
+                                <div class="right code">积分：{{item.lowestJifen}}</div>
+                            </div>
+                            <div class="ft-12 title ellipsis">{{item.businessName}}</div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 底部 -->
+        <footer class="ui-footer">
+            <div class="ui-menu">
+                <div class="ui-menu-inner">
+                    <a href="index.html">
+                        <img class="icon" src="images/bott2.png" />
+                        <span class="ft-14 act">首页</span>
+                    </a>
+                </div>
+                <div class="ui-menu-inner">
+                    <a href="category.html">
+                        <img class="icon" src="images/bott3.png" />
+                        <span class="ft-14">分类</span>
+                    </a>
+                </div>
+                <div class="ui-menu-inner">
+                    <a href="shoppingCart.html">
+                        <img class="icon" src="images/bott5.png" />
+                        <span class="ft-14">购物车</span>
+                    </a>
+                </div>
+                <div class="ui-menu-inner">
+                    <a href="user.html">
+                        <img class="icon" src="images/bott7.png" />
+                        <span class="ft-14">个人中心</span>
+                    </a>
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+<script>
+    $(function () {
+        //轮播图
+        var swiper = new Swiper('.swiper-container', {
+            spaceBetween: 30,
+            centeredSlides: true,
+            autoplay: {
+                delay: 2500,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            observer: true, //修改swiper自己或子元素时，自动初始化swiper
+            observeParents: true, //修改swiper的父元素时，自动初始化swiper
+        });
+
+        //加背景
+        jQuery(window).scroll(function () {
+            if ($(".search-bar-wrap")[0].getBoundingClientRect().top + $(document).scrollTop() > 45) {
+                $('.search-bar-wrap').css("background-color", "#62B900")
+            } else if ($(".search-bar-wrap")[0].getBoundingClientRect().top + $(document).scrollTop() <= 45) {
+                $('.search-bar-wrap').css("background", "none")
+            }
+        });
+    })
+</script>
+
+</html>

@@ -1,0 +1,249 @@
+.container {
+    background: #F5F5F7;
+    padding-bottom: 0.8rem;
+}
+
+.container .search-wrap {
+    height: 45px;
+    position: fixed;
+    z-index: 10;
+}
+
+.container .search-wrap .search-bar-wrap {
+    max-width: 6.4rem;
+    width: 100%;
+    height: 45px;
+    display: flex;
+    box-sizing: border-box;
+    position: fixed;
+    z-index: 1;
+    transition: all .6s linear;
+    padding: 6px 12px 10px;
+}
+
+.container .search-wrap .search-form {
+    flex: auto;
+}
+
+.container .search-wrap .search-bar {
+    background: #fff;
+    display: flex;
+    border-radius: 15px;
+    height: 30px;
+    width: 290px;
+    margin: auto;
+    opacity: 0.75;
+}
+
+.search_input {
+    outline: none;
+}
+
+.search-bar .search {
+    line-height: 20px;
+    font-size: 20px;
+    color: #878686;
+}
+
+.container .search-wrap .search-bar .icon {
+    padding: 6px 10px 0px 8px;
+}
+
+.container .search-wrap .search-bar input {
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    font-size: 15px;
+    color: #878686;
+    display: inline-block;
+    border-radius: 15px;
+}
+
+/*导航*/
+
+.div-slider {
+    width: 100%;
+    height: 160px;
+}
+
+.swiper-container {
+    width: 100%;
+    overflow: hidden;
+}
+
+/*轮播*/
+
+.container .ui-grids {
+    font-size: 12px;
+    align-items: center;
+    padding: 0px 5px 10px 0px;
+    background: #fff;
+}
+
+.ui-grids .icon {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+}
+
+.container .ui-grids .grid {
+    width: 25%;
+    float: left;
+    text-align: center;
+    display: inline-block;
+    /*line-height: 12px;*/
+    margin-top: 10px;
+}
+
+.container .ui-grids .last-grid {
+    margin-right: 0;
+}
+
+.container .ui-grids .ui_grid-img {
+    width: 48px;
+    height: 48px;
+    margin: 0 auto;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container .ui-grids .ui_grid-label {
+    text-align: center;
+    font-size: 14px;
+    margin-top: 8px;
+}
+
+.bannerImg {
+    width: 100%;
+    height: 100%;
+}
+
+/*模块*/
+
+.notice_wrap {
+    padding-bottom: 4px;
+    height: 40px;
+    padding-left: 12px;
+    line-height: 40px;
+}
+
+.aTitle {
+    display: inline-block;
+    width: 5px;
+    height: 18px;
+    background: #62B900;
+    border-radius: 10px;
+    margin-top: 10px;
+    margin-right: 10px;
+}
+
+.more {
+    font-size: 12px;
+    color: #878686;
+    padding-right: 16px;
+}
+
+/*副标题*/
+
+.container .suggestArea {
+    width: 100%;
+    background: #fff;
+    height: 106px;
+    padding: 15px;
+}
+
+.activeBanner {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-flow: row nowrap;
+    flex-flow: row nowrap;
+    overflow-x: auto;
+    list-style: none;
+}
+
+.activeBanner li {
+    float: left;
+    margin-right: 5px;
+    color: #878686;
+    font-size: 12px;
+}
+
+.activeBanner li img{
+    width: 130px;
+    height: 50px;
+}
+
+.activeBanner li div {
+    padding-top: 5px;
+}
+
+/*推荐专区*/
+
+.container .p-list .p-item:nth-child(even) {
+    /*偶数行*/
+    float: right;
+}
+
+.container .p-list .p-item:nth-child(odd) {
+    /*奇数行*/
+    float: left;
+}
+
+.container .p-list .p-item {
+    width: 49%;
+    height: 280px;
+    margin-top: 10px;
+    background: #fff;
+    box-sizing: border-box;
+}
+
+.container .p-list .p-item .bgImg {
+    width: 170px;
+    height: 158px;
+    display: block;
+    margin: auto;
+    padding-top: 10px;
+    padding-bottom: 2px;
+}
+
+.container .p-list .p-item .p-name {
+    height: 40px;
+    font-size: 14px;
+    padding: 0px 8px 0;
+    box-sizing: border-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-all;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.container .p-list .p-item .p-money {
+    color: red;
+    font-size: 10px;
+    padding: 2px 9px;
+    overflow: hidden;
+}
+
+.container .p-list .p-item .p-price {
+    color: red;
+    font-size: 14px;
+    padding: 0 7px;
+    overflow: hidden;
+}
+
+.container .p-list .p-item .p-price .code {
+    font-size: 12px;
+    color: #FFAA00;
+    padding-top: 4px;
+}
+
+/*商品专区*/
+
+.title {
+    padding: 0px 9px;
+    color: #878686
+}

@@ -1,0 +1,174 @@
+.favor-header-bar {
+    background-color: #fff;
+    overflow: hidden;
+    height: 40px;
+    line-height: 40px;
+    margin-bottom: 2px;
+}
+
+.favor-header-bar .tabs li {
+    display: block;
+    text-align: center;
+    float: left;
+    height: 37px;
+    line-height: 37px;
+    position: relative;
+    width: 16.6%;
+    word-break: break-all;
+    box-sizing: border-box;
+}
+
+.favor-header-bar .tabs li a {
+    font-size: 14px;
+    color: #878686;
+    display: block;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.favor-header-bar li.default a {
+    color: #2A2A2A;
+    font-weight: bold;
+    border-bottom: 3px solid #55A947;
+}
+
+.item-product {
+    margin-bottom: 12px;
+}
+
+.wecell {
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    padding: 0 12px;
+    background: #fff;
+}
+
+.logoshop {
+    width: 18px;
+    height: 18px;
+    margin-top: 8px;
+    float: left;
+}
+
+.shopName {
+    color: #292929;
+    font-size: 14px;
+    padding-left: 5px;
+}
+
+.status {
+    color: #878686;
+}
+
+.waitPay {
+    color: #FE9844;
+}
+
+.p-img-name {
+    display: flex;
+    box-sizing: border-box;
+    padding: 10px 12px;
+}
+
+.p-img-name .pro-img {
+    width: 80px;
+    height: 80px;
+    box-sizing: border-box;
+}
+
+.pro-img img {
+    width: 100%;
+    height: 100%;
+}
+
+.pro-info-box {
+    position: relative;
+    padding-left: 12px;
+    padding-right: 20px;
+    -webkit-box-flex: 1;
+    flex: 1;
+}
+
+.pro-name {
+    color: #292929;
+}
+
+.pro-name .clamp {
+    line-height: 15px;
+    max-height: 30px;
+    margin: 3px 0 7px;
+    font-size: 14px;
+}
+
+.pro-skus {
+    margin-top: 12px;
+    color: #B8B6B6;
+}
+
+.pro-price {
+    color: #000000;
+    font-size: 14px;
+    flex: 0.2;
+    text-align: right;
+}
+
+.p-list-product {
+    width: 100%;
+    background: #fff;
+}
+
+.weuicell {
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    padding: 0 12px;
+    background: #fff;
+    text-align: right;
+}
+
+.weuicell .ft-14 {
+    color: #292929;
+}
+
+.weuicell .ft-16 {
+    color: #000;
+}
+
+.weui-cell {
+    width: 100%;
+    height: 43px;
+    line-height: 43px;
+    padding: 0 12px;
+    background: #fff;
+    text-align: right;
+    border-top: 1px solid #e2e2e2;
+}
+
+.operate {
+    display: inline-block;
+    width: 70px;
+    height: 25px;
+    line-height: 24px;
+    text-align: center;
+    font-size: 14px;
+    border-radius: 4px;
+}
+
+.fff {
+    border: 1px solid #878686;
+    margin-right: 10px;
+}
+
+.ooo {
+    background: #62B900;
+    color: #fff;
+}
+
+.delet {
+    border: 1px solid #878686;
+}
+
+.deletOrder {
+    color: #FB5A23;
+}

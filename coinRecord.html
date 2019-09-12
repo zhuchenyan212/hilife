@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1,user-scalable=no">
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone=no" name="format-detection" />
+    <meta content="email=no" name="format-detection" />
+    <title>电子币提现记录</title>
+    <link rel="stylesheet" href="public/resource/css/weui.min.css">
+    <link rel="stylesheet" href="public/resource/css/jquery-weui.css">
+    <link href="public/common/common.css" rel="stylesheet">
+    <link href="public/resource/css/icon.css" rel="stylesheet">
+    <link href="css/redeem.css" rel="stylesheet">
+    <script src="public/resource/js/jquery.min.js"></script>
+    <script src="public/laydate/laydate.js"></script>
+    <script src="public/resource/js/jquery-weui.js"></script>
+    <script src="public/resource/js/vue.min.js"></script>
+    <script src="js/coinRecord.js"></script>
+</head>
+
+<body>
+    <div class="viewports" id="app">
+        <div class="container">
+            <div class="coin">
+                <p><img class="aimg" src="images/redeem.png" /><span>{{parseFloat(pMoney).toFixed(2)}}</span></p>
+            </div>
+            <article>
+                <div class="notice_wrap">
+                    <div class="div-vertical clear">
+                        <div class="left ft-14 clear">
+                            <span class="aTitle left"></span>
+                            <span><input type="text" class="layui-input" id="test3" placeholder="请选择年月"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="wrap">
+                    <div class="itemMoneys" v-for="item in recordList">
+                        <p>
+                            <span class="left ft-14 color-2a" v-if="item.type == 0">电子币提现</span>
+                            <span class="left ft-14 color-2a" v-else>区域代理提现</span>
+                            <span class="right ft-12 orange ">- {{parseFloat(item.money).toFixed(2)}}</span>
+                        </p>
+                        <p>
+                            <span class="left ft-14 color-2a">银行卡{{item.shortCardId}}提现</span>
+                            <span class="right ft-12 red ">+ {{parseFloat(item.money).toFixed(2)}}</span>
+                        </p>
+                        <p>
+                            <span class="left skr ft-12">{{item.time}}</span>
+                        </p>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </div>
+</body>
+
+</html>

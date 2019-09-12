@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1,user-scalable=no">
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone=no" name="format-detection" />
+    <meta content="email=no" name="format-detection" />
+    <title>确认订单</title>
+    <link rel="stylesheet" href="public/resource/css/weui.min.css">
+    <link rel="stylesheet" href="public/resource/css/jquery-weui.css">
+    <link href="public/common/common.css" rel="stylesheet">
+    <link href="public/resource/css/icon.css" rel="stylesheet">
+    <link href="css/confirmOrder.css" rel="stylesheet">
+    <script src="public/resource/js/jquery.min.js"></script>
+    <script src="public/resource/js/jquery-weui.js"></script>
+    <script src="public/resource/js/vue.min.js"></script>
+    <script src="js/confirmOrder.js"></script>
+    <script src="http://res2.wx.qq.com/open/js/jweixin-1.4.0.js "></script>
+</head>
+
+<body>
+    <div class="viewports" id="app">
+        <div class="ui-content">
+            <div class="step-info">
+                <div class="step-in">
+                    <div class="sf-addr-info" v-if='addressId != null'>
+                        <div class="sf-info">
+                            <div class="sf-name">
+                                <span class="ellipsis">{{c_name}}</span>
+                                <span class="phone ellipsis">{{c_phone}}</span>
+                            </div>
+                            <div class="sf-address ft-13">{{province}}{{city}}{{area}}{{town}}{{address}}</div>
+                        </div>
+                    </div>
+                    <div class="sf-addr-info" v-else>
+                        <div class="addressInfo" @click="chooseAddress()">
+                            <div class="sf-user">请添加收货地址</div>
+                        </div>
+                    </div>
+                    <div class="sf-ico1" @click="chooseAddress()">
+                        <span class="icon-108 icon"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="step-prod" v-for="item in goodsList">
+                <div class="step-tt">
+                    <img src="images/shop.png" />
+                    <span class="shopName">{{item.storeName}}</span>
+                </div>
+                <div v-for="item in item.storeGoods">
+                    <div class="prod-item">
+                        <div class="p-img-name">
+                            <div class="pro-img">
+                                <a :href="'productDetail.html?id='+item.gdId">
+                                    <image :src="item.examplePic" />
+                                </a>
+                            </div>
+                            <div class="pro-info-box">
+                                <div class="pro-name">
+                                    <div class="clamp">{{item.goodsName}}</div>
+                                </div>
+                                <div class="pro-minimum">{{item.detail}}</div>
+                                <div class="pro-price">
+                                    <span class="left">¥{{parseFloat(item.price).toFixed(2)}}</span>
+                                    <span class="right">x{{item.size}}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="step-com">
+                <div class="weui-cell" id="select">
+                    <div class="weui-cell__bd left">配送服务</div>
+                    <!-- <div class="weui-cell__ft_in-access right trans">
+                        <select class="left select" @click="choose()">
+                            <option value="0">快递运输</option>
+                            <option value="1">自提</option>
+                        </select>
+                    </div> -->
+                    <div class="right trans">
+                        <input class="check" value="1" type="radio" @click="choose($event)" name="yunshu">
+                        <div class="text left">自提</div>
+                    </div>
+                    <div class="right trans">
+                        <input class="check" value="0" type="radio" @click="choose($event)" name="yunshu" checked>
+                        <div class="text left">运输</div>
+                    </div>
+                </div>
+                <div class="step-com">
+                    <div class="weui-cell">
+                        <div class="weui-cell__bd left">运费</div>
+                        <div class="weui-cell__ft_in-access right">
+                            ¥<span class="iteyun">{{parseFloat(yunfei).toFixed(2)}}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="weui-cell">
+                    <div class="weui-cell__bd left">积分总计</div>
+                    <div class="weui-cell__ft_in-access right code">
+                        {{shoppingInfo.score}}
+                    </div>
+                </div>
+                <div class="weui-cell">
+                    <div class="weui-cell__bd left">电子币总计</div>
+                    <div class="weui-cell__ft_in-access right">
+                        {{parseFloat(shoppingInfo.totalPMoney).toFixed(2)}}sp
+                    </div>
+                </div>
+                <div class="weui-cell">
+                    <div class="weui-cell__bd left">商品总额</div>
+                    <div class="weui-cell__ft_in-access right">
+                        ¥{{parseFloat(shoppingInfo.totalPrice).toFixed(2)}}
+                    </div>
+                </div>
+                <div class="weui-cell">
+                    <div class="weui-cell__ft_in-access right">
+                        合计：¥<span class="money">{{money}}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="step-coms">
+                <div class="step-btn">
+                    <div class="wei-pay" @click="wexinPay()">微信支付</div>
+                    <div class="coin-pay" v-if="pMoney>=money" @click="coinPay()">电子币支付</div>
+                </div>
+            </div>
+            <div class="common-part pay-part">
+                <div class="common-dialog pay-dialog">
+                    <div class="dialog-title">请输入交易密码</div>
+                    <div class="dialog-title">(用户忘记交易密码，请与平台联系找回)</div>
+                    <div class="pay-money">￥{{parseFloat(shoppingInfo.totalPMoney).toFixed(2)}}sp</div>
+                    <div class="pay-password">
+                        <input type="tel" maxlength="6" class="real-ipt">
+                        <div class="surface-ipts">
+                            <div class="surface-ipt">
+                                <input type="password" maxlength="1">
+                                <input type="password" maxlength="1">
+                                <input type="password" maxlength="1">
+                                <input type="password" maxlength="1">
+                                <input type="password" maxlength="1">
+                                <input type="password" maxlength="1">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="btns">
+                        <button class="cancel-btn">取消</button>
+                        <button class="confirm-btn">付款</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,98 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1,user-scalable=no">
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone=no" name="format-detection" />
+    <meta content="email=no" name="format-detection" />
+    <title>我的收益</title>
+    <link rel="stylesheet" href="public/resource/css/weui.min.css">
+    <link rel="stylesheet" href="public/resource/css/jquery-weui.css">
+    <link href="public/common/common.css" rel="stylesheet">
+    <link href="public/resource/css/icon.css" rel="stylesheet">
+    <link href="css/income.css" rel="stylesheet">
+    <script src="public/resource/js/jquery.min.js"></script>
+    <script src="public/laydate/laydate.js"></script>
+    <script src="public/resource/js/jquery-weui.js"></script>
+    <script src="public/resource/js/vue.min.js"></script>
+    <script src="js/income.js"></script>
+</head>
+
+<body>
+    <div class="viewports" id="app">
+        <div class="container">
+            <div class="ahead">
+                <a href="user.html"><i class="icon icon-109" style="left: 18px;color:#fff;"></i></a>
+                <span><input type="text" class="layui-input" id="test3" placeholder="请选择年月"></span>
+            </div>
+            <section>
+                <div class="wrap hide">
+                    <div class="itemMoney">
+                        <span class="left ft-14 skr">2019年5月收益</span>
+                        <span class="right ft-12 red ">¥14168.00</span>
+                    </div>
+                </div>
+                <div class="notice_wrap">
+                    <div class="div-vertical clear">
+                        <div class="left ft-14 clear">
+                            <span class="aTitle left"></span>
+                            <span class="right color-2a font">伯乐收益明细</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="wrap">
+                    <div class="itemMoney" @click="goDetail(0)">
+                        <span class="left ft-14 skr">伯乐总收益</span>
+                        <span class="right ft-12 red ">¥{{myList.boleProfit}}<i class="icon-108 icon"></i></span>
+                    </div>
+                </div>
+                <div class="notice_wrap">
+                    <div class="div-vertical clear">
+                        <div class="left ft-14 clear">
+                            <span class="aTitle left"></span>
+                            <span class="right color-2a font">店主消费提成明细</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="wrap">
+                    <div class="itemMoney" @click="goDetail(1)">
+                        <span class="left ft-14 skr">一代店主消费收益</span>
+                        <span class="right ft-12 red">¥{{myList.firstProfit}}<i class="icon-108 icon"></i></span>
+                    </div>
+                    <div class="itemMoney" style="margin-top: 12px;" @click="goDetail(2)">
+                        <span class="left ft-14 skr">二代店主消费收益</span>
+                        <span class="right ft-12 red">¥{{myList.secondProfit}}<i class="icon-108 icon"></i></span>
+                    </div>
+                </div>
+                <div class="notice_wrap">
+                    <div class="div-vertical clear">
+                        <div class="left ft-14 clear">
+                            <span class="aTitle left"></span>
+                            <span class="right color-2a font">绩效收益</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="wrap">
+                    <div class="itemMoney">
+                        <span class="left ft-14 skr">绩效收益金额</span>
+                        <span class="right ft-12 red">¥{{myList.staticProfit}}</span>
+                    </div>
+                    <div class="remark">
+                        备注：银卡店主绩效收益总金额到加入青橄榄店主金额就不再有绩效收益。金卡店主则不受此影响，可以无限享受
+                    </div>
+                </div>
+                <div class="wrap">
+                    <div class="itemMoney" @click="goDetail(4)">
+                        <span class="left ft-14 skr">收益合计</span>
+                        <span class="right ft-12 red">¥{{myList.totalProfit}}<i class="icon-108 icon"></i></span>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</body>
+
+</html>

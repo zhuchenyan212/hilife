@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1,user-scalable=no">
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone=no" name="format-detection" />
+    <meta content="email=no" name="format-detection" />
+    <title>商品评价</title>
+    <link rel="stylesheet" href="public/resource/css/weui.min.css">
+    <link rel="stylesheet" href="public/resource/css/jquery-weui.css">
+    <link href="public/common/common.css" rel="stylesheet">
+    <link href="css/comment.css" rel="stylesheet">
+    <script src="public/resource/js/jquery.min.js"></script>
+    <script src="public/resource/js/jquery-weui.js"></script>
+    <script src="public/resource/js/vue.min.js"></script>
+    <script src="js/comment.js"></script>
+</head>
+
+<body>
+    <div class="nav" id="app">
+        <div class="tab">
+            <a href="javascript:;" rel="external nofollow" rel="external nofollow" class="curr">全部({{total}})</a>
+            <a href="javascript:;" rel="external nofollow" rel="external nofollow">好评({{good}})</a>
+            <a href="javascript:;" rel="external nofollow" rel="external nofollow">中评({{middle}})</a>
+            <a href="javascript:;" rel="external nofollow" rel="external nofollow">差评({{bad}})</a>
+        </div>
+        <div class="content">
+            <ul>
+                <li style="display: block">
+                    <!--全部评价-->
+                    <div class="user-info-item" v-for="item in commentList">
+                        <div class="info-main clear">
+                            <div class="left">
+                                <img class="user-img" :src="item.pic" />
+                                <span class="user-name">{{item.userName}}</span>
+                                <a class="user-level">{{item.levelName}}</a>
+                                <span class="right text showStar">
+                                    <img class="itemImg" v-for='ite in stars'
+                                        :src='ite <= item.star? "images/isstar.png":"images/nostar.png"' />
+                                </span>
+                            </div>
+                            <div class="right">{{item.time}}</div>
+                        </div>
+                        <div class="user-comment">{{item.comment}}</div>
+                    </div>
+                </li>
+                <li>
+                    <!--好评-->
+                    <div class="user-info-item" v-for="item in commentList" v-if="item.star > 3">
+                        <div class="info-main clear">
+                            <div class="left">
+                                <img class="user-img" :src="item.pic" />
+                                <span class="user-name">{{item.userName}}</span>
+                                <a class="user-level">{{item.levelName}}</a>
+                                <span class="right text showStar">
+                                    <img class="itemImg" v-for='ite in stars'
+                                        :src='ite <= item.star? "images/isstar.png":"images/nostar.png"' />
+                                </span>
+                            </div>
+                            <div class="right">{{item.time}}</div>
+                        </div>
+                        <div class="user-comment">{{item.comment}}</div>
+                    </div>
+                </li>
+                <li>
+                    <!--中评-->
+                    <div class="user-info-item" v-for="item in commentList" v-if="item.star == 3">
+                        <div class="info-main clear">
+                            <div class="left">
+                                <img class="user-img" :src="item.pic" />
+                                <span class="user-name">{{item.userName}}</span>
+                                <a class="user-level">{{item.levelName}}</a>
+                                <span class="right text showStar">
+                                    <img class="itemImg" v-for='ite in stars'
+                                        :src='ite <= item.star? "images/isstar.png":"images/nostar.png"' />
+                                </span>
+                            </div>
+                            <div class="right">{{item.time}}</div>
+                        </div>
+                        <div class="user-comment">{{item.comment}}</div>
+                    </div>
+                </li>
+                <li>
+                    <!--差评-->
+                    <div class="user-info-item" v-for="item in commentList" v-if="item.star < 3">
+                        <div class="info-main clear">
+                            <div class="left">
+                                <img class="user-img" :src="item.pic" />
+                                <span class="user-name">{{item.userName}}</span>
+                                <a class="user-level">{{item.levelName}}</a>
+                                <span class="right text showStar">
+                                    <img class="itemImg" v-for='ite in stars'
+                                        :src='ite <= item.star? "images/isstar.png":"images/nostar.png"' />
+                                </span>
+                            </div>
+                            <div class="right">{{item.time}}</div>
+                        </div>
+                        <div class="user-comment">{{item.comment}}</div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+
+</html>

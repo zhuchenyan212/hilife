@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1,user-scalable=no">
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone=no" name="format-detection" />
+    <meta content="email=no" name="format-detection" />
+    <title>收益明细</title>
+    <link rel="stylesheet" href="public/resource/css/weui.min.css">
+    <link rel="stylesheet" href="public/resource/css/jquery-weui.css">
+    <link href="public/common/common.css" rel="stylesheet">
+    <link href="public/resource/css/icon.css" rel="stylesheet">
+    <link href="css/income.css" rel="stylesheet">
+    <script src="public/resource/js/jquery.min.js"></script>
+    <script src="public/laydate/laydate.js"></script>
+    <script src="public/resource/js/jquery-weui.js"></script>
+    <script src="public/resource/js/vue.min.js"></script>
+    <script src="js/incomeDetail.js"></script>
+</head>
+
+<body>
+    <div class="viewports" id="app">
+        <div class="container">
+            <div class="ahead">
+                <a href="#" onClick="javascript :history.back(-1);"><i class="icon icon-109"
+                        style="left: 18px;color:#fff;"></i></a>
+                <span><input type="text" class="layui-input" id="test3" placeholder="请选择年月"></span>
+            </div>
+            <article>
+                <div class="incomeWrap">
+                    <div class="income-person" v-for="item in myList">
+                        <div class="person-item shadow">
+                            <span class="font">{{item.userName}}（{{item.level}}）</span>
+                            <span class="font">{{item.cellphone}}</span>
+                            <span class="morelen">结算日：{{countDate}}</span>
+                        </div>
+                        <div class="person-item">
+                            <span class="items">分享收益合计：<i class="red">¥{{item.boleProfit}}</i></span>
+                            <span class="items">一代消费收益合计：<i class="red">¥{{item.firstProfit}}</i></span>
+                        </div>
+                        <div class="person-item bor">
+                            <span class="items">静态收益合计：<i class="red">¥{{item.staticProfit}}</i></span>
+                            <span class="items">二代消费收益合计：<i class="red">¥{{item.secondProfit}}</i></span>
+                        </div>
+                        <div class="person-item bor">
+                            <span class="items">自我消费合计：<i class="green">¥{{item.selfConsumption}}</i></span>
+                            <span class="items">自我消费电子币：<i class="green">¥{{item.selfConsumptionPmoney}}</i></span>
+                        </div>
+                        <div class="person-item bor">
+                            <span class="items">伯乐商品消费：<i class="green">¥{{item.vipConsumption}}</i></span>
+                        </div>
+                        <div class="person-item bor">
+                            <span
+                                class="items">税收：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i
+                                    class="green">¥{{item.tax}}</i></span>
+                            <span
+                                class="items">管理费：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i
+                                    class="green">¥{{item.serviceCharge}}</i></span>
+                        </div>
+                        <div class="person-item bor">
+                            <span class="item">收益合计：<i class="red">{{item.totalFee}}</i></span>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </div>
+</body>
+
+</html>

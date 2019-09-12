@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1,user-scalable=no">
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone=no" name="format-detection" />
+    <meta content="email=no" name="format-detection" />
+    <title>物流详情</title>
+    <link rel="stylesheet" href="public/resource/css/weui.min.css">
+    <link rel="stylesheet" href="public/resource/css/jquery-weui.css">
+    <link href="public/common/common.css" rel="stylesheet">
+    <link href="css/confirmOrder.css" rel="stylesheet">
+    <script src="public/resource/js/jquery.min.js"></script>
+    <script src="public/resource/js/jquery-weui.js"></script>
+    <script src="public/resource/js/vue.min.js"></script>
+    <script src="js/logistics.js"></script>
+</head>
+
+<body>
+    <div class="viewports" id="app">
+        <div class="ui-content">
+            <div class="step-heads">
+                <div>
+                    <p>订单编号：{{orderId}}</p>
+                    <p>承运商：{{wuliuCompany}}</p>
+                    <p>物流编号:{{wuliuNumber}}</p>
+                </div>
+            </div>
+            <div class="step-logistics">
+                <div class="package-status">
+                    <div class="status-box">
+                        <ul class="status-list" id="wuliu">
+                            <li v-for="item in wuliuMsg">
+                                <div class="status-content-before">{{item.wuliuMsg}}</div>
+                                <div class="status-time-before">{{item.wuliuTime}}</div>
+                                <div class="status-line"></div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

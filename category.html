@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1,user-scalable=no">
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone=no" name="format-detection" />
+    <meta content="email=no" name="format-detection" />
+    <title>商品分类</title>
+    <link rel="stylesheet" href="public/resource/css/weui.min.css">
+    <link rel="stylesheet" href="public/resource/css/jquery-weui.css">
+    <link href="public/common/common.css" rel="stylesheet">
+    <link href="public/resource/css/icon.css" rel="stylesheet">
+    <link href="css/category.css" rel="stylesheet">
+    <script src="public/resource/js/jquery.min.js"></script>
+    <script src="public/resource/js/jquery-weui.js"></script>
+    <script src="public/resource/js/vue.min.js"></script>
+    <script src="js/category.js"></script>
+</head>
+
+<body>
+    <div class="viewports">
+        <div class="container" id="app">
+            <!--商品搜索-->
+            <header class="searchWrap">
+                <div class="search-bar" @click="search()">
+                    <div class="search-bar-inner">
+                        <i class="icon-4 icon search"></i>
+                        <input type="text" name="searchWord" placeholder="搜索商品" class="search-bar-input" />
+                    </div>
+                </div>
+            </header>
+            <!-- 分类列表 -->
+            <section class="pickGoods">
+                <!--左边-->
+                <div class="category-second ft-12">
+                    <div class="category-second-name" v-for="(item,index) in goodsKinds" :class="{'curtive':index==0}">
+                        <div class="nav_items" @click="clickTab(item.id)">{{item.kindsName}}</div>
+                    </div>
+                </div>
+                <!--右边-->
+                <div class="ui-content">
+                    <div class="nav_right">
+                        <!-- 图册分类 -->
+                        <div class="s_list">
+                            <div class="s-item" v-for="item in goodsKindsTypes">
+                                <div class="p-img-name" @click="searchTo(item.id,item.typeName)">
+                                    <div class="pro-img">
+                                        <img class="bgimg" :src="item.typePic">
+                                    </div>
+                                </div>
+                                <div class="category-first-name">{{item.typeName}}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- 底部 -->
+            <footer class="ui-footer">
+                <div class="ui-menu">
+                    <div class="ui-menu-inner">
+                        <a href="index.html">
+                            <img class="icon" src="images/bott1.png" />
+                            <span class="ft-14">首页</span>
+                        </a>
+                    </div>
+                    <div class="ui-menu-inner">
+                        <a href="category.html">
+                            <img class="icon" src="images/bott4.png" />
+                            <span class="ft-14 act">分类</span>
+                        </a>
+                    </div>
+                    <div class="ui-menu-inner">
+                        <a href="shoppingCart.html">
+                            <img class="icon" src="images/bott5.png" />
+                            <span class="ft-14">购物车</span>
+                        </a>
+                    </div>
+                    <div class="ui-menu-inner">
+                        <a href="user.html">
+                            <img class="icon" src="images/bott7.png" />
+                            <span class="ft-14">个人中心</span>
+                        </a>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+</body>
+
+</html>

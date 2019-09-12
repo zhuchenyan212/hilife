@@ -1,0 +1,117 @@
+.searchWrap {
+    height: 55px;
+    display: flex;
+}
+
+.searchWrap .search-bar {
+    padding: 12px;
+    display: flex;
+    box-sizing: border-box;
+    background-color: #ffffff;
+    position: fixed;
+    z-index: 10;
+    width: 100%;
+    max-width: 6.4rem;
+}
+
+.searchWrap .search-bar form {
+    flex: auto;
+}
+
+.searchWrap .search-bar-inner {
+    border-radius: 20px;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    display: flex;
+    background: #f5f5f5;
+}
+
+.searchWrap .search-bar-input {
+    box-sizing: border-box;
+    width: 100%;
+    height: 30px;
+    background-color: #f4f4f4;
+    border-radius: 0 20px 20px 0px;
+    font-size: 0.14rem;
+    padding-left: 0.1rem;
+}
+
+.searchWrap .search-bar-inner .icon {
+    padding: 5px 10px 0px 12px;
+    line-height: 20px;
+    font-size: 18px;
+    color: #878686;
+}
+
+/*搜索*/
+
+.pickGoods {
+    position: relative;
+    min-height: 6rem;
+    background: #fff;
+}
+
+.category-second {
+    width: 100px;
+    height: 100%;
+    background: #F5F5F7;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    text-align: center;
+    color: #2A2A2A;
+}
+
+.category-second-name {
+    height: 45px;
+    line-height: 45px;
+}
+
+.curtive {
+    border-left: 8px solid #55A947;
+    background: #fff;
+}
+
+.ui-content {
+    padding: 0px 0 0 100px;
+}
+
+.nav_right {
+    width: 100%;
+}
+
+.nav_right .s_list {
+    width: 100%;
+    overflow: scroll;
+    background: #fff;
+}
+
+.nav_right .s_list .s-item {
+    width: 75px;
+    height: 105px;
+    padding: 10px 10px;
+    text-align: center;
+    float: left;
+    margin: 5px;
+}
+
+.s_list .s-item .p-img-name .pro-img {
+    width: 75px;
+    height: 75px;
+    border: 1px solid #e2e2e2;
+}
+
+.bgimg {
+    width: 100%;
+    height: 100%;
+}
+
+.category-first-name {
+    text-align: center;
+    width: 75px;
+    height: 30px;
+    line-height: 30px;
+    font-size: 10px;
+    color: #292929;
+}

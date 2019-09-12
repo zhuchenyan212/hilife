@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1,user-scalable=no">
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone=no" name="format-detection" />
+    <meta content="email=no" name="format-detection" />
+    <title>个人资料</title>
+    <link rel="stylesheet" href="public/resource/css/weui.min.css">
+    <link rel="stylesheet" href="public/resource/css/jquery-weui.css">
+    <link href="public/common/common.css" rel="stylesheet">
+    <link href="public/resource/css/icon.css" rel="stylesheet">
+    <link href="css/userInfo.css" rel="stylesheet">
+    <script src="public/resource/js/jquery.min.js"></script>
+    <script src="public/resource/js/jquery-weui.js"></script>
+    <script src="public/resource/js/vue.min.js"></script>
+    <script src="js/userInfo.js"></script>
+</head>
+
+<body>
+    <div class="viewports">
+        <div class="container" id="app">
+            <header class="head-wrap ft-14">
+                <div class="head-content color-bg-ff">
+                    <a href="user.html">
+                        <i class="icon icon-109"></i>
+                    </a>
+                    <span class="font">编辑个人资料</span>
+                </div>
+            </header>
+            <!-- 列表信息 -->
+            <div class="my_section">
+                <div class="my_cate">
+                    <div class="weui-cell_access" style="height: 80px;">
+                        <form id="myForm" action="" method="post">
+                            <div class="weui-cell__bd">
+                                <div class="uploader-trigger upload">
+                                    <input type="file" id="browerfile" name="files" style="display: none;" class="test">
+                                    <div class="img_center">
+                                        <img :src="pic" class="img1-img">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="weui-cell__ft_in-access" @click="chooseImg()">
+                                <span onclick="browerfile.click()">点击修改头像</span>
+                            </div>
+                        </form>
+                    </div>
+                    <a class="weui-cell_access" href="javascript:;">
+                        <div class="weui-cell__bd">姓名</div>
+                        <div class="weui-cell__ft_in-access"><input class="username" placeholder="请输入姓名" /><i
+                                class="icon-108 icon"></i></div>
+                    </a>
+                    <a class="weui-cell_access" href="Identity.html">
+                        <div class="weui-cell__bd">身份证</div>
+                        <div class="weui-cell__ft_in-access" v-if='identityCard4 ==""'>
+                            去绑定
+                            <i class="icon-108 icon"></i>
+                        </div>
+                        <div class="weui-cell__ft_in-access" v-else>
+                            *{{identityCard4}}
+                        </div>
+                    </a>
+                    <a class="weui-cell_access" href="javascript:;">
+                        <div class="weui-cell__bd">手机号码</div>
+                        <div class="weui-cell__ft_in-access">
+                            <input class="phone" style="width: 90px;" placeholder="手机号码" maxlength="11" /><i
+                                class="icon-108 icon"></i>
+                        </div>
+                    </a>
+                    <a class="weui-cell_access" href="javascript:;">
+                        <div class="weui-cell__bd">推荐店主</div>
+                        <div class="weui-cell__ft_in-access">
+                            {{upperName}}
+                        </div>
+                    </a>
+                    <a class="weui-cell_access" href="registerPass.html">
+                        <div class="weui-cell__bd">注册密码</div>
+                        <div class="weui-cell__ft_in-access">
+                            注册密码更改<i class="icon-108 icon"></i>
+                        </div>
+                    </a>
+                    <a class="weui-cell_access" href="transaction.html">
+                        <div class="weui-cell__bd">交易密码</div>
+                        <div class="weui-cell__ft_in-access">
+                            电子币、积分购物使用<i class="icon-108 icon"></i>
+                        </div>
+                    </a>
+                    <a class="weui-cell_access" href="address.html">
+                        <div class="weui-cell__bd">我的收货地址</div>
+                        <div class="weui-cell__ft_in-access">
+                            管理我的收货地址<i class="icon-108 icon"></i>
+                        </div>
+                    </a>
+                    <a class="weui-cell_access" href="bindCard.html">
+                        <div class="weui-cell__bd">绑定卡号</div>
+                        <div class="weui-cell__ft_in-access" v-if='shortCardId != ""'>
+                            {{shortCardId}}
+                            <i class="icon-108 icon"></i>
+                        </div>
+                        <div class="weui-cell__ft_in-access" v-else>
+                            去绑定
+                            <i class="icon-108 icon"></i>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

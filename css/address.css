@@ -1,0 +1,134 @@
+ * {
+     margin: 0;
+     padding: 0;
+ }
+
+ body {
+     font-size: 100px;
+     color: #666;
+ }
+
+ .ui-loader {
+     display: none
+ }
+
+ .my-address-list {
+     overflow: hidden;
+     max-width: 6.4rem;
+ }
+
+ .my-address-list .touch {
+     background-color: #fff;
+     border-bottom: 0.01rem solid #ccc;
+     overflow: hidden;
+     position: relative;
+ }
+
+ .my-address-list .item.selected {
+     -webkit-transform: translate(-18%, 0);
+     -webkit-transition: all 0.3s linear;
+ }
+
+ .my-address-list .item {
+    overflow: hidden;
+    padding: 0 0.1rem;
+    width: 100%;
+    -webkit-transition: all 0.3s linear;
+ }
+
+ .my-address-list .item .remove {
+     display: block;
+     float: left;
+     background-color: #ff0000;
+     color: #fff;
+     width: 20%;
+     margin-left: 0.16rem;
+     font-size: 0.14rem;
+     text-align: center;
+     text-decoration: none;
+     height: 73px;
+     line-height: 73px;
+ }
+
+ .my-address-list .item .list {
+    overflow: hidden;
+    width: 78%;
+    font-size: 14px;
+    float: left;
+    position: relative;
+ }
+
+ .my-address-list .item .list .name-phone {
+     overflow: hidden;
+     margin-top: 0.1rem;
+     color: #000;
+     font-weight: bold;
+ }
+
+ .my-address-list .item .list .name-phone span {
+     display: inline-block;
+ }
+
+ .my-address-list .item .list .name-phone span.name {
+     float: left;
+ }
+
+ .my-address-list .item .list .address-info {
+     margin: 0.1rem 0;
+     width: 100%;
+     overflow: hidden;
+     white-space: nowrap;
+     text-overflow: ellipsis;
+     -o-text-overflow: ellipsis;
+     color: #2a2a2a;
+ }
+
+ .my-address-list .item .icon2 {
+    width: 10%;
+    height: 50px;
+    overflow: hidden;
+    float: left;
+    font-size: 14px;
+ }
+
+ .my-address-list .item .icon2 .edit {
+    display: inline-block;
+    margin-top: 0.1rem;
+    text-decoration: none;
+    width: 25px;
+    height: 25px;
+ }
+
+ .my-address-list .item .mark {
+     background: rgba(0, 0, 0, 0.4);
+     position: absolute;
+     left: 0;
+     top: 0;
+     right: 0;
+     bottom: 0;
+     z-index: 100;
+     text-align: center;
+ }
+
+ .my-address-list .item .mark span {
+     display: inline-block;
+     padding: 0.05rem 0.1rem;
+     color: #fff;
+     border: 0.02rem solid #fff;
+     position: absolute;
+     left: 50%;
+     top: 50%;
+ }
+
+ .botton {
+     position: fixed;
+     bottom: 0;
+     width: 100%;
+     height: 0.45rem;
+     line-height: 0.45rem;
+     text-align: center;
+     background-color: #62B900;
+     color: #fff;
+     font-size: 0.14rem;
+     max-width: 6.4rem;
+ }

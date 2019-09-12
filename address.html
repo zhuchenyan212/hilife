@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1,user-scalable=no">
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone=no" name="format-detection" />
+    <meta content="email=no" name="format-detection" />
+    <title>收货地址管理</title>
+    <link href="css/address.css" rel="stylesheet">
+    <link rel="stylesheet" href="public/resource/css/weui.min.css">
+    <link rel="stylesheet" href="public/resource/css/jquery-weui.css">
+    <script src="public/resource/js/jquery.min.js"></script>
+    <script src="public/resource/js/vue.min.js"></script>
+    <script src="js/address.js"></script>
+    <script>
+        var fontSize = 100;
+        var elm = document.documentElement;
+        elm.style.fontSize = fontSize * (elm.clientWidth / 320) + 'px';
+    </script>
+</head>
+
+<body>
+    <div id="app">
+        <div class="my-address-list" id="my-address-list">
+            <div class="touch" v-for="(item,index) in myAddressList" :id="'touch'+index">
+                <div class="item" :data-id="item.id">
+                    <div class="list">
+                        <div class="name-phone"><span class="name">{{item.c_name}}</span>&nbsp;&nbsp;&nbsp;&nbsp;<span
+                                class="phone">{{item.c_phone}}</span></div>
+                        <div class="address-info">
+                            {{item.province}}{{item.city}}{{item.area}}{{item.town}}{{item.address}}</div>
+                    </div>
+                    <div class="icon2"><a class="edit" :data-id="item.id"
+                            @click="edit(item.id,item.c_name,item.c_phone,item.province,item.city,item.area,item.town,item.address)"><img
+                                class="edit" src="images/e.png" /></a>
+                    </div>
+                    <div class="icon2">
+                        <a class="edit" :data-id="item.id" @click="deleteAddress(item.id)">
+                            <img class="edit" src="images/d.png" />
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="botton" onclick="window.location.href='addAddress.html'">新增收货地址</div>
+    </div>
+</body>
+
+</html>

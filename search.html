@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1,user-scalable=no">
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone=no" name="format-detection" />
+    <meta content="email=no" name="format-detection" />
+    <title>搜索</title>
+    <link rel="stylesheet" href="public/resource/css/weui.min.css">
+    <link rel="stylesheet" href="public/resource/css/jquery-weui.css">
+    <link href="public/common/common.css" rel="stylesheet">
+    <link href="public/resource/css/icon.css" rel="stylesheet">
+    <link href="css/search.css" rel="stylesheet">
+    <script src="public/resource/js/jquery.min.js"></script>
+    <script src="public/resource/js/jquery-weui.js"></script>
+    <script src="public/resource/js/vue.min.js"></script>
+    <script src="js/search.js"></script>
+</head>
+
+<body>
+    <div class="viewports" style="background:#fff;">
+        <div class="container" id="app">
+            <!--商品搜索-->
+            <header class="searchWrap">
+                <div class="search-bar">
+                    <div class="search-bar-inner">
+                        <i class="icon-4 icon search" @click="search()"></i>
+                        <input type="text" placeholder="搜索商品" class="search-bar-input" />
+                    </div>
+                </div>
+            </header>
+        </div>
+    </div>
+</body>
+
+</html>

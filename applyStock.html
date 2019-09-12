@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1,user-scalable=no">
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone=no" name="format-detection" />
+    <meta content="email=no" name="format-detection" />
+    <title>申请库存</title>
+    <link rel="stylesheet" href="public/resource/css/weui.min.css">
+    <link rel="stylesheet" href="public/resource/css/jquery-weui.css">
+    <link href="public/common/common.css" rel="stylesheet">
+    <link href="public/resource/css/icon.css" rel="stylesheet">
+    <link href="css/stock.css" rel="stylesheet">
+    <script src="public/resource/js/jquery.min.js"></script>
+    <script src="public/resource/js/jquery-weui.js"></script>
+    <script src="public/resource/js/vue.min.js"></script>
+    <script src="js/applyStock.js"></script>
+</head>
+
+<body>
+    <div class="viewports" id="app">
+        <header class="head-wrap ft-14">
+            <div class="head-content color-bg-ff">
+                <a href="user.html">
+                    <i class="icon icon-109"></i>
+                </a>
+                <span class="font"></span>
+            </div>
+        </header>
+        <div class="favor-header-bar">
+            <ul class="tabs">
+                <li class="default">
+                    <a href="applyStock.html">申请库存</a>
+                </li>
+                <li>
+                    <a href="inventory.html">库存量</a>
+                </li>
+                <li>
+                    <a href="generation.html">代发货</a>
+                </li>
+                <li>
+                    <a href="agency.html">销售业绩</a>
+                </li>
+            </ul>
+        </div>
+        <div class="container">
+            <div class="pro-list">
+                <div class="c-item" v-for="item in productList">
+                    <div class="c-main">
+                        <div class="pro-img">
+                            <a href="javascript:;">
+                                <img :src="item.examplePic">
+                            </a>
+                        </div>
+                        <div class="pro-info-box">
+                            <div class="pro-name ft-12">
+                                <div class="clamp">{{item.goodsName}}</div>
+                            </div>
+                            <div class="p-unit">
+                                <span class="right choose" @click="products(item.gid,item.examplePic)">选规格</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="popup-mask hide" @click="hideParam()"></div>
+        <!-- 商品详情弹层 -->
+        <div class="ui-spec-menu">
+            <div class="spec-menu-container" @click="getData()">
+                <div class="padd name-card clear">
+                    <div class="s-thumb">
+                        <img class="smallImg" :src="examplePic">
+                    </div>
+                    <div class="wrap">
+                        <div class="s-title ft-14 ellipsis goodsName">{{goodsDetail.goodsName}}</div>
+                        <div class="s-price">
+                            <span class="price lowestPrice">¥{{parseFloat(goodsDetail.lowestPrice).toFixed(2)}}</span>
+                        </div>
+                        <div class="ft-12 start-Num elect">电子币：<span
+                                class="lowestPMoney">{{parseFloat(goodsDetail.lowestPMoney).toFixed(2)}}</span>SP</div>
+                        <div class="ft-12 start-Num over">剩余库存：<span
+                                class="totalStock">{{goodsDetail.totalStock}}</span></div>
+                    </div>
+                </div>
+                <div class="semester-select clear" v-for="item in optionList">
+                    <p class="params">{{item.param}}</p>
+                    <ul class="color-cells">
+                        <li class="color-cell" v-for="item in item.options">
+                            <span class="item" @click="choose($event)">{{item}}</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="semester-select clear">
+                    <p class="left" style="margin-top: 8px;">数量</p>
+                    <div class="right">
+                        <div class="c-quantity">
+                            <div class="quantity color-3">
+                                <span class="bnt font btn-reduce" :data-id="goodsDetail.id">-</span>
+                                <input type="number" class="int font num" :data-id="goodsDetail.id" value="1">
+                                <span class="bnt font btn-increse" :data-id="goodsDetail.id">+</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ui-option btns">
+                    <div class="add" @click="add()">下单</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

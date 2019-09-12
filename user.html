@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1,user-scalable=no">
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone=no" name="format-detection" />
+    <meta content="email=no" name="format-detection" />
+    <title>个人中心</title>
+    <link rel="stylesheet" href="public/resource/css/weui.min.css">
+    <link rel="stylesheet" href="public/resource/css/jquery-weui.css">
+    <link href="public/common/common.css" rel="stylesheet">
+    <link href="public/resource/css/icon.css" rel="stylesheet">
+    <link href="css/user.css" rel="stylesheet">
+    <script src="public/resource/js/jquery.min.js"></script>
+    <script src="public/resource/js/jquery-weui.js"></script>
+    <script src="public/resource/js/vue.min.js"></script>
+    <script src="js/user.js"></script>
+</head>
+
+<body>
+    <div class="viewports">
+        <div class="container" id="app">
+            <!-- 用户信息 -->
+            <div class="head-img">
+                <div class="my-info clear">
+                    <a class="my-img" href="javascript:;">
+                        <img :src="customerIndex.pic" />
+                    </a>
+                    <div class="my-person-info">
+                        <div>
+                            <span>{{customerIndex.userName}}</span>
+                            <span id="userLevel">{{customerIndex.levelName}}</span>
+                        </div>
+                        <div style="line-height: 30px;">
+                            <span>手机号：{{customerIndex.cellphone}}</span>
+                        </div>
+                    </div>
+                    <a class="userinfoManager" href="userInfo.html">
+                        个人资料管理
+                        <i class="icon-108 icon"></i>
+                    </a>
+                    <div class="progress">
+                        <div class="user-money">
+                            <p id="len">
+                                <span>{{parseFloat(my_self_consumption).toFixed(2)}}/{{parseFloat(self_consumption).toFixed(2)}}</span>
+                            </p>
+                        </div>
+                        <div class="user-han">
+                            <p>经营者每月必须自我消费{{parseFloat(self_consumption).toFixed(2)}}元，否则取消当月收益资格</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="my-own clear">
+                    <div class="left">
+                        <p class="coin">电子币(sp)</p>
+                        <span class="user-operates" onclick="window.location.href='withDraw.html'">提现</span>
+                        <p class="num">{{parseFloat(customerIndex.pMoney).toFixed(2)}}</p>
+                    </div>
+                    <div class="right">
+                        <p class="coin">积分</p>
+                        <span class="user-operate" v-if="signIn == 0" @click="checkIn()">签到</span>
+                        <span class="user-operate" v-else>已签到</span>
+                        <p class="cod">{{customerIndex.score}}</p>
+                        <span class="title">每天签到领积分</span>
+                    </div>
+                </div>
+            </div>
+            <!-- 订单 -->
+            <a class="my_order" href="myOrder.html">
+                <div class="weui-cell_access">
+                    <div class="weui-cell__bd left"><span class="aTitle left"></span>我的订单</div>
+                    <div class="weui-cell__ft_in-access right">查看全部订单
+                        <i class="icon-108 icon"></i>
+                    </div>
+                </div>
+            </a>
+            <div class="my_section">
+                <div class="my_order_desc">
+                    <a class="menu-item" href="waitPay.html">
+                        <img class="iconfont" src="images/h1.png" />
+                        <span>待付款</span>
+                    </a>
+                    <a class="menu-item" href="waitDeliver.html">
+                        <img class="iconfont" src="images/h2.png" />
+                        <span>待发货</span>
+                    </a>
+                    <a class="menu-item" href="waitReceipt.html">
+                        <img class="iconfont" src="images/h3.png" />
+                        <span>待收货</span>
+                    </a>
+                    <a class="menu-item" href="waitEvaluate.html">
+                        <img class="iconfont" src="images/h4.png" />
+                        <span>待评价</span>
+                    </a>
+                    <a class="menu-item" href="returnProduct.html">
+                        <img class="iconfont" src="images/h5.png" />
+                        <span>退换货</span>
+                    </a>
+                </div>
+            </div>
+            <!-- 代理店 -->
+            <a class="my_order" href="javascript:;" v-if="customerIndex.isAgent == 0">
+                <div class="weui-cell_access">
+                    <div class="weui-cell__bd left"><span class="aTitle left"></span>我的代理店</div>
+                </div>
+            </a>
+            <div class="my_section" v-if="customerIndex.isAgent == 0">
+                <div class="my_order_desc">
+                    <a class="menu-item" href="applyStock.html">
+                        <img class="iconfont" src="images/c1.png" />
+                        <span>申请库存</span>
+                    </a>
+                    <a class="menu-item" href="inventory.html">
+                        <img class="iconfont" src="images/c2.png" />
+                        <span>库存量</span>
+                    </a>
+                    <a class="menu-item" href="generation.html">
+                        <img class="iconfont" src="images/c3.png" />
+                        <span>代发货</span>
+                    </a>
+                    <a class="menu-item" href="agency.html">
+                        <img class="iconfont" src="images/c4.png" />
+                        <span>销售业绩</span>
+                    </a>
+                </div>
+            </div>
+            <!--个人-->
+            <div class="myinfo">
+                <div class="weui-cell_access" @click="link(customerIndex.level)">
+                    <div class="weui-cell__bd"><img src="images/sy.png" />我的收益</div>
+                    <div class="weui-cell__ft_in-access">
+                        <i class="icon-108 icon"></i>
+                    </div>
+                </div>
+                <div class="weui-cell_access" onclick="window.location.href='myMember.html'">
+                    <div class="weui-cell__bd"><img src="images/hy.png" />我的店主</div>
+                    <div class="weui-cell__ft_in-access">
+                        <i class="icon-108 icon"></i>
+                    </div>
+                </div>
+                <div class="weui-cell_access" onclick="window.location.href='spread.html'">
+                    <div class="weui-cell__bd"><img src="images/er.png" />推广码</div>
+                    <div class="weui-cell__ft_in-access">
+                        <i class="icon-108 icon"></i>
+                    </div>
+                </div>
+                <div class="weui-cell_access" @click="goattr(customerIndex.score)">
+                    <div class="weui-cell__bd"><img src="images/code.png" />积分明细</div>
+                    <div class="weui-cell__ft_in-access">
+                        <i class="icon-108 icon"></i>
+                    </div>
+                </div>
+            </div>
+            <!-- 底部 -->
+            <footer class="ui-footer">
+                <div class="ui-menu">
+                    <div class="ui-menu-inner">
+                        <a href="index.html">
+                            <img class="icon" src="images/bott1.png" />
+                            <span class="ft-14">首页</span>
+                        </a>
+                    </div>
+                    <div class="ui-menu-inner">
+                        <a href="category.html">
+                            <img class="icon" src="images/bott3.png" />
+                            <span class="ft-14">分类</span>
+                        </a>
+                    </div>
+                    <div class="ui-menu-inner">
+                        <a href="shoppingCart.html">
+                            <img class="icon" src="images/bott5.png" />
+                            <span class="ft-14">购物车</span>
+                        </a>
+                    </div>
+                    <div class="ui-menu-inner">
+                        <a href="user.html">
+                            <img class="icon" src="images/bott8.png" />
+                            <span class="ft-14 act">个人中心</span>
+                        </a>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+</body>
+
+</html>

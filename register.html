@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1,user-scalable=no">
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone=no" name="format-detection" />
+    <meta content="email=no" name="format-detection" />
+    <title>注册</title>
+    <link rel="stylesheet" href="public/resource/css/weui.min.css">
+    <link rel="stylesheet" href="public/resource/css/jquery-weui.css">
+    <link href="public/common/common.css" rel="stylesheet">
+    <link href="css/register.css" rel="stylesheet">
+    <script src="public/resource/js/jquery.min.js"></script>
+    <script src="public/resource/js/jquery-weui.js"></script>
+    <script src="public/resource/js/vue.min.js"></script>
+    <script src="js/register.js"></script>
+</head>
+
+<body>
+    <div class="viewports">
+        <section id="app">
+            <div class="ui-content-wrap">
+                <div class="ui-content">
+                    <div class="page-input-container ft-14">
+                        <div class="notice_wrap">
+                            <div class="div-vertical clear">
+                                <div class="left ft-17 clear">
+                                    <span class="aTitle left"></span>
+                                    <span class="right color-2a font">用户注册</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="input-container">
+                            <div class="pwd-txt"><img src="images/user.png" /></div>
+                            <input type="text" name="username" placeholder="姓名（请填写真实姓名，否则不能提现）" v-model="username">
+                            <div class="title">*</div>
+                        </div>
+                        <div class="input-container">
+                            <div class="pwd-txt"><img src="images/phone.png" /></div>
+                            <input type="number" class="phone" name="phone" placeholder="手机号码（请填写真实手机号，否则不能提现）"
+                                maxlength="11" v-model="phone" />
+                            <div class="title">*</div>
+                        </div>
+                        <div class="input-container">
+                            <div class="pwd-txt"><img src="images/tuiguang.png" /></div>
+                            <input type="text" class="suggest" name="suggest" placeholder="推荐人" value="" readonly />
+                            <div class="title"></div>
+                        </div>
+                        <div class="notice_wrap">
+                            <div class="div-vertical clear">
+                                <div class="left ft-16 clear">
+                                    <span class="aTitle left"></span>
+                                    <span class="right color-2a font">注册密码</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="input-container">
+                            <div class="pwd-txt"><img src="images/password.png" /></div>
+                            <input class="registerPass" type="text" name="registerPass" placeholder="注册密码为手机号码，可到个人中心修改"
+                                readonly>
+                        </div>
+                        <div class="notice_wrap">
+                            <div class="div-vertical clear">
+                                <div class="left ft-16 clear">
+                                    <span class="aTitle left"></span>
+                                    <span class="right color-2a font">交易密码</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="input-container">
+                            <div class="pwd-txt"><img src="images/password.png" /></div>
+                            <input type="password" name="transPass" placeholder="请输入交易密码（电子币和积分购物时使用）" maxlength="6"
+                                v-model="transPass">
+                            <div class="title">*</div>
+                        </div>
+                        <div class="input-container" style="padding-left: 10%;">
+                            <input type="password" name="RtransPass" placeholder="确认交易密码" maxlength="6"
+                                v-model="RtransPass">
+                            <div class="title" style="padding-left: 16px;">*</div>
+                        </div>
+                    </div>
+                    <button class="submit-btn ft-18" @click="register()">注&nbsp;&nbsp;册</button>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+
+</html>

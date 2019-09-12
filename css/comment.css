@@ -1,0 +1,94 @@
+.nav .tab {
+    width: 100%;
+    height: 43px;
+    line-height: 43px;
+    background: #fff;
+    border-bottom: 1px solid #999;
+}
+
+.tab a {
+    float: left;
+    width: 19.6%;
+    height: 26px;
+    line-height: 26px;
+    font-size: 13px;
+    border-radius: 5px;
+    text-align: center;
+    display: inline-block;
+    margin: 8px 10px;
+    background: #E1DFDF;
+}
+
+.tab .curr {
+    background: #62B900;
+    color: #fff;
+}
+
+.content ul li {
+    display: none;
+    width: 100%;
+}
+
+.user-info-item {
+    width: 100%;
+    background: #fff;
+    margin-bottom: 10px;
+}
+
+.info-main {
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    padding-left: 15px;
+    padding-right: 15px;
+    border-bottom: 1px solid #e2e2e2;
+}
+
+.user-img {
+    width: 30px;
+    height: 30px;
+    float: left;
+    margin-top: 10px;
+}
+
+.user-name {
+    padding-left: 15px;
+    font-size: 14px;
+    color: #292929;
+}
+
+.user-level {
+    color: #FFAA00;
+    border: 1px solid rgba(255, 170, 0, 1);
+    border-radius: 10px;
+    font-size: 10px;
+    padding: 1px 3px;
+}
+
+.info-main .right {
+    color: #B8B6B6;
+    font-size: 12px;
+}
+
+.user-comment {
+    width: 100%;
+    /*height: 90px;*/
+    font-size: 12px;
+    line-height: 20px;
+    color: #2A2A2A;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 10px;
+    overflow: hidden;
+}
+
+.showStar {
+    width: 100px;
+    height: 43px;
+    margin-left: -18px;
+}
+
+.showStar img {
+    width: 10px;
+    height: 10px;
+}

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1,user-scalable=no">
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone=no" name="format-detection" />
+    <meta content="email=no" name="format-detection" />
+    <title>首页</title>
+    <link rel="stylesheet" href="public/resource/css/weui.min.css">
+    <link rel="stylesheet" href="public/resource/css/jquery-weui.css">
+    <link href="public/common/common.css" rel="stylesheet">
+    <link href="public/resource/css/icon.css" rel="stylesheet">
+    <link href="public/resource/css/swiper.min.css" rel="stylesheet">
+    <link href="css/index.css" rel="stylesheet">
+    <script src="public/resource/js/jquery.min.js"></script>
+    <script src="http://res2.wx.qq.com/open/js/jweixin-1.4.0.js "></script>
+    <!-- <script src="public/resource/js/jquery-weui.js"></script>
+    <script src="public/resource/js/swiper.min.js"></script>
+    <script src="public/resource/js/vue.min.js"></script> -->
+</head>
+
+<body>
+    <div class="viewports">
+        <form id="form">
+            <input type="text" id="a" value="wx96046645636b6d58">
+            <input type="text" id="b" value="9qur6tudemahnz0efs670qa0mxdn01cp">
+            <input type="text" id="c" value="prepay_id=wx21112433242437dcd77a6b461185374400">
+            <input type="text" id="d" value="D81D013452A3A4CD64EFD3C29BB6567F">
+            <input type="text" id="e" value="MD5">
+            <input type="text" id="f" value="1566357873">
+            <button onclick="aaa()">提交</button>
+        </form>
+    </div>
+</body>
+<script>
+    // function aaa(){
+    // console.log("jinru fangfa");
+    // alert("asd");
+    // }
+    // $(function () {
+    function aaa() {
+        // var formdata=new FormData()
+        // console.log(formData)
+        // console.log(formdata.get("a"))
+        debugger;
+        alert(1111)
+        console.log("jinru fangfa");
+        // function onBridgeReady() {
+        WeixinJSBridge.invoke(
+            'getBrandWCPayRequest', {
+                "appId": $("#a").val(),     //公众号名称，由商户传入
+                "timeStamp": $("#f").val(),         //时间戳，自1970年以来的秒数
+                "nonceStr": $("#b").val(), //随机串
+                "package": $("#c").val(),
+                "signType": $("#e").val(),         //微信签名方式：
+                "paySign": $("#d").val(), //微信签名
+            },
+            function (res) {
+                console.log(res);
+                alert(res)
+                if (res.err_msg == "get_brand_wcpay_request:ok") {
+                    // 使用以上方式判断前端返回,微信团队郑重提示：
+                    //res.err_msg将在用户支付成功后返回ok，但并不保证它绝对可靠。
+                    alert('支付成功')
+                } else if (res.err_msg == "get_brand_wcpay_request:cancel") {
+                    alert('用户取消支付')
+                }
+            });
+        // }
+        // if (typeof WeixinJSBridge == "undefined") {
+        //     if (document.addEventListener) {
+        //         document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
+        //     } else if (document.attachEvent) {
+        //         document.attachEvent('WeixinJSBridgeReady', onBridgeReady);
+        //         document.attachEvent('onWeixinJSBridgeReady', onBridgeReady);
+        //     }
+        // } else {
+        //     onBridgeReady();
+        // }
+    }
+    // })
+</script>
+
+</html>

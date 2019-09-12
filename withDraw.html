@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1,user-scalable=no">
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone=no" name="format-detection" />
+    <meta content="email=no" name="format-detection" />
+    <title>电子币提现</title>
+    <link rel="stylesheet" href="public/resource/css/weui.min.css">
+    <link rel="stylesheet" href="public/resource/css/jquery-weui.css">
+    <link href="public/common/common.css" rel="stylesheet">
+    <link href="public/resource/css/icon.css" rel="stylesheet">
+    <link href="css/redeem.css" rel="stylesheet">
+    <script src="public/resource/js/jquery.min.js"></script>
+    <script src="public/resource/js/jquery-weui.js"></script>
+    <script src="public/resource/js/vue.min.js"></script>
+    <script src="js/withDraw.js"></script>
+</head>
+
+<body>
+    <div class="viewports" id="app">
+        <div class="container">
+            <div class="coin">
+                <p>电子币：<span>{{parseFloat(pMoney).toFixed(2)}}sp</span><a class="record margin"
+                        href="coinRecord.html">提现记录</a></p>
+            </div>
+            <div class="my_cate">
+                <a class="weui-cell_access">
+                    <div class="weui-cell__bd">{{myBank.bank}}</div>
+                    <div class="weui-cell__ft_in-access">
+                        {{myBank.branchBank}}
+                    </div>
+                </a>
+                <a class="weui-cell_access">
+                    <div class="weui-cell__bd">银行卡号</div>
+                    <div class="weui-cell__ft_in-access">
+                        {{myBank.cardId}}
+                    </div>
+                </a>
+                <a class="weui-cell_access">
+                    <div class="weui-cell__bd">用户名</div>
+                    <div class="weui-cell__ft_in-access oran">
+                        {{username}}
+                    </div>
+                </a>
+                <a class="weui-cell_access">
+                    <div class="weui-cell__bd">可提现金额：</div>
+                    <div class="weui-cell__ft_in-access oran">
+                        ¥{{parseFloat(money).toFixed(2)}}
+                    </div>
+                </a>
+                <a class="weui-cell_access">
+                    <div class="weui-cell__bd">提现金额：</div>
+                    <div class="weui-cell__ft_in-access">
+                        <input class="inputmoney" placeholder="请输入提现金额" style="text-align: right;" />
+                    </div>
+                </a>
+                <a class="weui-cell_access">
+                    <div class="weui-cell__bd">T+1到账时间为1日，手续费{{rate}}%</div>
+                    <div class="weui-cell__ft_in-access oran">
+                        <input class="service" style="text-align: right;" :value="serviceCharge" readonly />
+                    </div>
+                </a>
+                <a class="weui-cell_access">
+                    <div class="weui-cell__bd">个人所得税</div>
+                    <div class="weui-cell__ft_in-access oran">
+                        <input class="money" style="text-align: right;" :value="tax" readonly />
+                    </div>
+                </a>
+            </div>
+            <div class="btnwrap">
+                <div class="confirm" @click="sureTixian(myBank.cbId)">确认提现</div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1,user-scalable=no">
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone=no" name="format-detection" />
+    <meta content="email=no" name="format-detection" />
+    <title>评价商品</title>
+    <link rel="stylesheet" href="public/resource/css/weui.min.css">
+    <link rel="stylesheet" href="public/resource/css/jquery-weui.css">
+    <link href="public/common/common.css" rel="stylesheet">
+    <link href="css/confirmOrder.css" rel="stylesheet">
+    <script src="public/resource/js/jquery.min.js"></script>
+    <script src="public/resource/js/jquery-weui.js"></script>
+    <script src="public/resource/js/jquery.raty.min.js"></script>
+    <script src="public/resource/js/vue.min.js"></script>
+    <script src="js/evaluate.js"></script>
+</head>
+
+<body>
+    <div class="viewports" id="app">
+        <div class="container">
+            <div class="step-prod" style="margin-bottom: 0px;">
+                <div class="step-tt">
+                    <img src="images/shop.png" />
+                    <span class="shopName">{{storeName}}</span>
+                </div>
+                <div class="prod-item" v-for="item in goodsMsg">
+                    <div class="p-img-name">
+                        <div class="pro-img">
+                            <a href="javascript:;">
+                                <image :src="item.examplePic" />
+                            </a>
+                        </div>
+                        <div class="pro-info-box">
+                            <div class="pro-name">
+                                <div class="clamp">{{item.goodsName}}</div>
+                            </div>
+                            <div class="pro-minimum">{{item.gdMsg}}</div>
+                            <div class="pro-price">
+                                <span class="left">¥{{item.price}}</span>
+                                <span class="right">x{{item.size}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="step-coms" style="margin-bottom: 10px;">
+                <div class="weui-cell">
+                    <div class="weui-cell__bd left">商品金额</div>
+                    <div class="weui-cell__ft_in-access right">
+                        ¥{{goodsPrice}}
+                    </div>
+                </div>
+                <div class="weui-cell">
+                    <div class="weui-cell__bd left">总价</div>
+                    <div class="weui-cell__ft_in-access right">
+                        ¥{{totalPrice}}
+                    </div>
+                </div>
+            </div>
+            <div class="evalute-product-item">
+                <div class="pro-info">
+                    <img src="images/mini.png" />
+                    <div class="user-choose">
+                        <span class="left">描述相符</span>
+                        <div class="evalute right">
+                            <div id="default-demo1" @click="demo1()"></div>
+                        </div>
+                    </div>
+                    <span class="showStar1"></span>
+                </div>
+                <div class="evalute-info">
+                    <textarea class="commentContent" placeholder="评价内容仅限200字哦..." maxlength="100"></textarea>
+                </div>
+            </div>
+            <div class="bottomB">
+                <div class="left sure" @click="evaluate()">提交</div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

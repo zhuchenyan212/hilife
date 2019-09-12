@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1,user-scalable=no">
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone=no" name="format-detection" />
+    <meta content="email=no" name="format-detection" />
+    <title>申请退换货</title>
+    <link rel="stylesheet" href="public/resource/css/weui.min.css">
+    <link rel="stylesheet" href="public/resource/css/jquery-weui.css">
+    <link href="public/common/common.css" rel="stylesheet">
+    <link href="public/resource/css/icon.css" rel="stylesheet">
+    <link href="css/confirmOrder.css" rel="stylesheet">
+    <script src="public/resource/js/jquery.min.js"></script>
+    <script src="public/resource/js/jquery-weui.js"></script>
+    <script src="public/resource/js/vue.min.js"></script>
+    <script src="js/applicate.js"></script>
+</head>
+
+<body>
+    <div class="viewports" id="app">
+        <div class="ui-content">
+            <div class="step-prod">
+                <div class="step-tt">
+                    <img src="images/shop.png" />
+                    <span class="shopName">{{storeName}}</span>
+                </div>
+                <div class="prod-item" v-for="item in goodsMsg">
+                    <div class="p-img-name">
+                        <div class="pro-img">
+                            <a href="javascript:;">
+                                <image :src="item.examplePic" />
+                            </a>
+                        </div>
+                        <div class="pro-info-box">
+                            <div class="pro-name">
+                                <div class="clamp">{{item.goodsName}}</div>
+                            </div>
+                            <div class="pro-minimum">{{item.gdMsg}}</div>
+                            <div class="pro-price">
+                                <span class="left">¥{{item.price}}</span>
+                                <span class="right">x{{item.size}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="step-com">
+                <div class="weui-cell">
+                    <div class="weui-cell__bd left">退换原因</div>
+                    <input type="text" style="margin-left: 10px;width: 80%;background: #f5f5f5;" class="reason"
+                        placeholder="请输入退换货原因">
+                </div>
+            </div>
+            <div class="step-coms">
+                <div class="weui-cell">
+                    <div class="weui-cell__bd left">商品金额</div>
+                    <div class="weui-cell__ft_in-access right">
+                        ¥{{goodsPrice}}
+                    </div>
+                </div>
+                <div class="weui-cell">
+                    <div class="weui-cell__bd left">总价</div>
+                    <div class="weui-cell__ft_in-access right">
+                        ¥{{totalPrice}}
+                    </div>
+                </div>
+            </div>
+            <div class="bottomB">
+                <div class="left sure" @click="applyTui()">申请退换</div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

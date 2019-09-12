@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1,user-scalable=no">
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone=no" name="format-detection" />
+    <meta content="email=no" name="format-detection" />
+    <title>我的店主</title>
+    <link rel="stylesheet" href="public/resource/css/weui.min.css">
+    <link rel="stylesheet" href="public/resource/css/jquery-weui.css">
+    <link href="public/common/common.css" rel="stylesheet">
+    <link href="public/resource/css/icon.css" rel="stylesheet">
+    <link href="css/spread.css" rel="stylesheet">
+    <script src="public/resource/js/jquery.min.js"></script>
+    <script src="public/resource/js/jquery-weui.js"></script>
+    <script src="public/resource/js/vue.min.js"></script>
+    <script src="js/myMember.js"></script>
+</head>
+
+<body>
+    <div class="viewports" id="app">
+        <div class="container">
+            <div class="ahead">
+                <a href="user.html"><i class="icon icon-109"
+                        style="position: absolute;left: 11px;top: 11px;color:#fff;"></i></a>
+                <span>店主类型</span>
+                <span>当月增量</span>
+                <span>总人数</span>
+            </div>
+            <div class="sortMember">
+                <div class="sortItems" @click="linkTo1()">
+                    <span>分享店主</span>
+                    <span>{{vipInfo.recommendVipMonth}}</span>
+                    <span>{{vipInfo.recommendVip}}<i class="icon-108 icon"></i></span>
+                </div>
+                <div class="sortItems" @click="linkTo2()">
+                    <span>金卡店主</span>
+                    <span>{{vipInfo.goldVipTime}}</span>
+                    <span>{{vipInfo.goldVip}}<i class="icon-108 icon"></i></span>
+                </div>
+                <div class="sortItems" @click="linkTo3()">
+                    <span>银卡店主</span>
+                    <span>{{vipInfo.silverVipTime}}</span>
+                    <span>{{vipInfo.silverVip}}<i class="icon-108 icon"></i></span>
+                </div>
+                <div class="sortItems" @click="linkTo4()">
+                    <span>一代店主</span>
+                    <span>{{vipInfo.firstVipMonth}}</span>
+                    <span>{{vipInfo.firstVip}}<i class="icon-108 icon"></i></span>
+                </div>
+                <div class="sortItems" @click="linkTo5()">
+                    <span>二代店主</span>
+                    <span>{{vipInfo.secondVipTime}}</span>
+                    <span>{{vipInfo.secondVip}}<i class="icon-108 icon"></i></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

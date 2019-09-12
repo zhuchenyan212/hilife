@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1,user-scalable=no">
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone=no" name="format-detection" />
+    <meta content="email=no" name="format-detection" />
+    <title>搜索</title>
+    <link rel="stylesheet" href="public/resource/css/weui.min.css">
+    <link rel="stylesheet" href="public/resource/css/jquery-weui.css">
+    <link href="public/common/common.css" rel="stylesheet">
+    <link href="public/resource/css/icon.css" rel="stylesheet">
+    <link href="css/search.css" rel="stylesheet">
+    <script src="public/resource/js/jquery.min.js"></script>
+    <script src="public/resource/js/jquery-weui.js"></script>
+    <script src="public/resource/js/vue.min.js"></script>
+    <script src="js/searchProduct.js"></script>
+</head>
+
+<body>
+    <div class="viewports">
+        <div class="container" id="app">
+            <!--商品搜索-->
+            <header class="searchWrap">
+                <div class="search-bar">
+                    <div class="search-bar-inner" @click="search()">
+                        <i class="icon-4 icon search"></i>
+                        <input type="text" placeholder="搜索商品" class="search-bar-input" />
+                    </div>
+                </div>
+            </header>
+            <!-- 货品列表目录 -->
+            <section class="ui-content">
+                <div class="new-search-tab">
+                    <div class="new-search-item" v-if="goodsList.length == 0"><span @click="firstAll()">全部</span></div>
+                    <div class="new-search-item active" v-else><span @click="firstAll()">全部</span></div>
+                    <div class="new-search-item"><span @click="secondSales()">销量</span><img class="sales"
+                            src="images/off.png" /></div>
+                    <div class="new-search-item"><span @click="thirdline()">综合</span></div>
+                    <div class="new-search-item"><span @click="forthPrice()">价格</span><img class="prices"
+                            src="images/off.png" /></div>
+                </div>
+                <!--商品列表-->
+                <div class="search-list">
+                    <div class="search-list-wrap">
+                        <div class="p-list clear">
+                            <div class="p-item" v-for="item in goodsList">
+                                <a :href="'productDetail.html?id='+item.gid">
+                                    <div><img class="bgImg" :src="item.examplePic" /></div>
+                                    <div class="p-name hit ellipsis">{{item.goodsName}}</div>
+                                    <div class="p-money">电子币：{{parseFloat(item.lowestPMoney).toFixed(2)}}sp</div>
+                                    <div class="p-price clear">
+                                        <div class="left ft-16">￥{{parseFloat(item.lowestPrice).toFixed(2)}}</div>
+                                        <div class="right code">积分：{{item.lowestJifen}}</div>
+                                    </div>
+                                    <div class="ft-12 title ellipsis">{{item.username}}</div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <article v-if="goodsList.length == 0">
+                    暂无信息
+                </article>
+            </section>
+        </div>
+    </div>
+</body>
+
+</html>

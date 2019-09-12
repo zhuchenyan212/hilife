@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1,user-scalable=no">
+	<meta content="yes" name="apple-mobile-web-app-capable" />
+	<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+	<meta content="telephone=no" name="format-detection" />
+	<meta content="email=no" name="format-detection" />
+	<title>登录</title>
+	<link rel="stylesheet" href="public/resource/css/weui.min.css">
+	<link rel="stylesheet" href="public/resource/css/jquery-weui.css">
+	<link rel="stylesheet" href="public/common/common.css">
+	<link rel="stylesheet" href="css/login.css">
+	<script src="public/resource/js/jquery.min.js"></script>
+	<script src="public/resource/js/jquery-weui.js"></script>
+	<script src="public/resource/js/vue.min.js"></script>
+	<script src="js/login.js"></script>
+</head>
+
+<body>
+	<div class="viewports bgff">
+		<div class="container" id="app">
+			<div class="loginContainer">
+				<img class="logo" src="images/icon.png">
+				<div class="formMsg">
+					<div>
+						<input class="poinput" type="text" placeholder="请输入手机号" v-model="cellphone" maxlength="11" />
+					</div>
+					<div>
+						<input class="poinput" type="text" placeholder="请输入注册密码" v-model="password" />
+					</div>
+					<div class="submit-btn ft-18" @click="login()">登&nbsp;&nbsp;录</div>
+					<!--<div class="ft-18 link" @click="link()">新用户请<span class="green">注册</span></span>-->
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
+</body>
+
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1,user-scalable=no">
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone=no" name="format-detection" />
+    <meta content="email=no" name="format-detection" />
+    <title>绑定卡号</title>
+    <link rel="stylesheet" href="public/resource/css/weui.min.css">
+    <link rel="stylesheet" href="public/resource/css/jquery-weui.css">
+    <link href="public/common/common.css" rel="stylesheet">
+    <link href="public/resource/css/icon.css" rel="stylesheet">
+    <link href="css/userInfo.css" rel="stylesheet">
+    <script src="public/resource/js/jquery.min.js"></script>
+    <script src="public/resource/js/jquery-weui.js"></script>
+    <script src="public/resource/js/vue.min.js"></script>
+    <script src="js/bindCard.js"></script>
+</head>
+
+<body>
+    <div class="viewports" id="app">
+        <div class="container">
+            <div class="my_section">
+                <div class="my_cate">
+                    <a class="weui-cell_access">
+                        <div class="weui-cell__bd">选择银行</div>
+                        <div class="weui-cell__ft_in-access">
+                            <select class="select" id="select">
+                                <option v-for="item in bankList" :value="item.id" :name="item.bankName">
+                                    {{item.bankName}}</option>
+                            </select>
+                            <i class="icon-74 icon left"></i>
+                        </div>
+                    </a>
+                    <a class="weui-cell_access">
+                        <div class="weui-cell__bd">选择支行</div>
+                        <div class="weui-cell__ft_in-access">
+                            <input class="cardNumber" id="bankName" placeholder="请输入银行支行名称" />
+                        </div>
+                    </a>
+                    <a class="weui-cell_access">
+                        <div class="weui-cell__bd">开户人姓名</div>
+                        <div class="weui-cell__ft_in-access">
+                            {{userName}}
+                        </div>
+                    </a>
+                    <a class="weui-cell_access">
+                        <div class="weui-cell__bd">银行卡预留手机号</div>
+                        <div class="weui-cell__ft_in-access">
+                            <input class="cardNumber" id="bankPhone" placeholder="请输入预留手机号码" maxlength="11" />
+                        </div>
+                    </a>
+                    <a class="weui-cell_access">
+                        <div class="weui-cell__bd">绑定卡号</div>
+                        <div class="weui-cell__ft_in-access">
+                            <input class="cardNumber" id="bankNumber" placeholder="请输入当前银行卡号" maxlength="20" />
+                        </div>
+                    </a>
+                </div>
+                <div class="btnwrap">
+                    <div class="confirm" @click="change()">确认修改</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

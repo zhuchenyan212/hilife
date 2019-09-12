@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1,user-scalable=no">
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone=no" name="format-detection" />
+    <meta content="email=no" name="format-detection" />
+    <title>我的推广码</title>
+    <link href="public/common/common.css" rel="stylesheet">
+    <link href="public/resource/css/icon.css" rel="stylesheet">
+    <link href="css/spread.css" rel="stylesheet">
+    <script src="public/resource/js/jquery.min.js"></script>
+    <script src="public/resource/js/jquery-weui.js"></script>
+    <script src="public/resource/js/vue.min.js"></script>
+    <script src="public/resource/js/qcode.js"></script>
+    <script src="js/spread.js"></script>
+    <style>
+        input {
+            background: #fff;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="viewports" id="app">
+        <div class="container">
+            <section class="ui-content">
+                <div class="head-img">
+                    <div class="my-info clear">
+                        <a class="my-img">
+                            <img :src="pic" />
+                        </a>
+                        <div class="my-person-info">
+                            <div>{{userName}}</div>
+                            <div>HI-LIFE商城</div>
+                            <div class="bor">{{level==1? "普通店主" :(level==2? "银卡店主" : "金卡店主")}}</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ui-share">
+                    <input id="text" type="text" :data-id="id"
+                        :value="'https://www.kuailelifegroup.com/project/register.html?id='+id" />
+                    <div id="qrcode" class="erweima"></div>
+                    <div class="bottom_title">
+                        <span>微信扫一扫，将二维码供他人扫码即可成为推荐人，快来分享吧！</span>
+                    </div>
+                </div>
+            </section>
+            <div class="botton" onclick="window.location.href='user.html'">返回</div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1,user-scalable=no">
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone=no" name="format-detection" />
+    <meta content="email=no" name="format-detection" />
+    <title>商品详情</title>
+    <link rel="stylesheet" href="public/resource/css/weui.min.css">
+    <link rel="stylesheet" href="public/resource/css/jquery-weui.css">
+    <link href="public/common/common.css" rel="stylesheet">
+    <link href="public/resource/css/icon.css" rel="stylesheet">
+    <link href="public/resource/css/swiper.min.css" rel="stylesheet">
+    <link href="css/productDetail.css" rel="stylesheet">
+    <script src="public/resource/js/jquery.min.js"></script>
+    <script src="public/resource/js/jquery-weui.js"></script>
+    <script src="public/resource/js/swiper.min.js"></script>
+    <script src="public/resource/js/vue.min.js"></script>
+    <script src="js/productDetail.js"></script>
+</head>
+
+<body>
+    <div class="viewports  bgColor" id="app">
+        <div class="ui-content-wrap">
+            <div class="ui-content">
+                <!--商品图册swiper-->
+                <div class="div-slider swiper-container">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide" v-for="item in goodsDetail.picList">
+                            <a :href="item">
+                                <img class="bannerImg" :src="item">
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Add Pagination -->
+                    <div class="swiper-pagination"></div>
+                </div>
+                <!-- 商品信息-->
+                <section class="basic-info">
+                    <div class="wrap">
+                        <p class="s-price ft-16">
+                            <span class="price">¥{{parseFloat(goodsDetail.lowestPrice).toFixed(2)}}</span>
+                        </p>
+                        <div class="s-title clamp ft-14">
+                            <a href="javascript:;" class="productName">{{goodsDetail.goodsName}}</a>
+                        </div>
+                        <div class="s-supply ft-13">
+                            <span
+                                class="txt ellipsis elect">电子币：{{parseFloat(goodsDetail.lowestPMoney).toFixed(2)}}sp</span>
+                            <span class="txt ellipsis over">剩余库存：{{goodsDetail.totalStock}}</span>
+                            <span class="ellipsis over">销量：{{goodsDetail.saleNum}}</span>
+                        </div>
+                    </div>
+                </section>
+                <!-- 商品属性 -->
+                <section class="s-action-container">
+                    <div class="wrap">
+                        <div class="color-sku choose">
+                            <span>请选择</span>
+                            <i class="icon icon-83 right" @click="chooseParam()"></i>
+                        </div>
+                        <div class="color-sku param" @click="openParam()">
+                            <span>参数</span>
+                            <a>{{goodsDetail.paramsStr}}</a>
+                            <i class="icon icon-108 right"></i>
+                        </div>
+                        <div class="color-sku adjust" @click="goto()">
+                            <span>评价</span>
+                            <a class="elect">好评：{{goodsDetail.goodRate}}</a>
+                            <span class="right">+{{goodsDetail.commentsSize}}条</span>
+                        </div>
+                    </div>
+                </section>
+                <!-- 商品介绍 -->
+                <section class="prod-parts">
+                    <div class="wrap ft-14">
+                        <div class="tab-lst">
+                            <div class="prod-info-tt ft-14">商品详情</div>
+                        </div>
+                    </div>
+                </section>
+                <div class="tab-cont">
+                    <div class="prod-info-dt prod-details">
+                        <div class="ft-14">{{goodsDetail.detailText}}</div>
+                        <div class="leftInfo" v-for="item in goodsDetail.detailPic">
+                            <img :src="item" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--底部-->
+        <footer class="ui-footer action-bar">
+            <div class="ui-menu">
+                <div class="concern-cart">
+                    <a href="index.html" class="border-r favorite">
+                        <img class="icon" src="images/bott1.png" alt="" id="img">
+                        <span class="ft-12">首页</span>
+                    </a>
+                    <a href="shoppingCart.html" class="cart-icn">
+                        <em class="radiu">{{size}}</em>
+                        <img class="icon" src="images/cart.png" id="img">
+                        <span class="ft-12">购物车</span>
+                    </a>
+                </div>
+                <div class="action-list">
+                    <a href="javascript:;" class="add_cart ft-13 choose" @click="chooseParam()">加入购物车</a>
+                    <a href="javascript:;" class="direct_order ft-13 choose" @click="chooseParam()">立即购买</a>
+                </div>
+            </div>
+        </footer>
+        <div class="popup-mask hide" @click="hideParam()"></div>
+        <!--商品参数弹窗-->
+        <div class="shopParam">
+            <!--<p class="param-product">产品参数</p>-->
+            <div class="s-thumb">
+                <img class="smallImg" :src="goodsDetail.examplePic">
+            </div>
+            <div class="param-item" v-for="item in goodsDetail.param">
+                <a>{{item.key}}：</a>
+                <span>{{item.value}}</span>
+            </div>
+            <div class="param-item" v-for="item in optionList">
+                <a>{{item.param}}</a>
+                <span class="item" v-for="item in item.options">{{item}}</span>
+            </div>
+            <div class="bottm-compelet" @click="closeParam()">完成</div>
+        </div>
+        <!-- 商品详情弹层 -->
+        <div class="ui-spec-menu">
+            <div class="spec-menu-container">
+                <div @click="getData()">
+                    <div class="right" @click="hideParam()"><img src="images/close.png" /></div>
+                    <div class="padd name-card clear">
+                        <div class="s-thumb">
+                            <img class="smallImg" :src="goodsDetail.examplePic">
+                        </div>
+                        <div class="wrap">
+                            <div class="s-price">
+                                <span
+                                    class="price lowestPrice">¥{{parseFloat(goodsDetail.lowestPrice).toFixed(2)}}</span>
+                            </div>
+                            <div class="ft-12 start-Num elect">电子币：<span
+                                    class="lowestPMoney">{{parseFloat(goodsDetail.lowestPMoney).toFixed(2)}}</span>SP
+                            </div>
+                            <div class="ft-12 start-Num over">剩余库存：<span
+                                    class="totalStock">{{goodsDetail.totalStock}}</span></div>
+                        </div>
+                    </div>
+                    <div class="semester-select clear" v-for="item in optionList">
+                        <p class="params">{{item.param}}</p>
+                        <ul class="color-cells">
+                            <li class="color-cell" v-for="item in item.options">
+                                <span class="item" @click="choose($event)">{{item}}</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="semester-select clear">
+                    <p class="left" style="margin-top: 8px;">数量</p>
+                    <div class="right">
+                        <div class="c-quantity">
+                            <div class="quantity color-3">
+                                <span class="bnt font btn-reduce" :data-id="goodsDetail.id">-</span>
+                                <input type="number" class="int font num" :data-id="goodsDetail.id" value="1">
+                                <span class="bnt font btn-increse" :data-id="goodsDetail.id">+</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ui-option btns">
+                    <div class="add_cart addCart" @click="addCart()">加入购物车</div>
+                    <div class="add_cart buyNow" @click="buyNow()">立即购买</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    $(function () {
+        //轮播图
+        var swiper = new Swiper('.swiper-container', {
+            spaceBetween: 30,
+            centeredSlides: true,
+            autoplay: {
+                delay: 2500,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            observer: true, //修改swiper自己或子元素时，自动初始化swiper
+            observeParents: true, //修改swiper的父元素时，自动初始化swiper
+        });
+    })
+</script>
+
+</html>

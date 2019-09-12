@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1,user-scalable=no">
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone=no" name="format-detection" />
+    <meta content="email=no" name="format-detection" />
+    <title>店主明细</title>
+    <link rel="stylesheet" href="public/resource/css/weui.min.css">
+    <link rel="stylesheet" href="public/resource/css/jquery-weui.css">
+    <link href="public/common/common.css" rel="stylesheet">
+    <link href="public/resource/css/icon.css" rel="stylesheet">
+    <link href="css/myMemInfo.css" rel="stylesheet">
+    <script src="public/resource/js/jquery.min.js"></script>
+    <script src="public/laydate/laydate.js"></script>
+    <script src="public/resource/js/jquery-weui.js"></script>
+    <script src="public/resource/js/vue.min.js"></script>
+    <script src="js/myMemInfo.js"></script>
+</head>
+
+<body>
+    <div class="viewports" id="app">
+        <div class="container">
+            <div class="ahead">
+                <a href="#" onClick="javascript :history.back(-1);"><i class="icon icon-109"
+                        style="left: 12px;color:#fff;position: absolute;top:11px;"></i></a>
+                <span><input type="text" class="layui-input" id="test3" placeholder="请选择年月"></span>
+            </div>
+            <section>
+                <div class="user-info-item" v-for="item in myVipList">
+                    <div class="info-main clear">
+                        <div class="userInfo">
+                            <img class="user-img" :src="item.pic" />
+                            <span class="user-name">{{item.userName}}</span>
+                            <a class="user-level">{{item.levelName}}</a>
+                        </div>
+                        <div class="showInfo">
+                            <span>注册时间：{{item.time}}</span>
+                            <span>手机号：{{item.cellphone}}</span>
+                        </div>
+                    </div>
+                    <div class="user-comment">
+                        <div class="item-money border">
+                            <p class="money">￥{{item.monthConsume}}</p>
+                            <p class="title">本月消费</p>
+                        </div>
+                        <div class="item-money border">
+                            <p class="money">￥{{item.monthRebate}}</p>
+                            <p class="title">本月返利</p>
+                        </div>
+                        <div class="item-money border">
+                            <p class="money">￥{{item.totalConsume}}</p>
+                            <p class="title">历史消费</p>
+                        </div>
+                        <div class="item-money">
+                            <p class="money">￥{{item.totalRebate}}</p>
+                            <p class="title">历史返利</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</body>
+
+</html>

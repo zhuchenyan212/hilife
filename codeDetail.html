@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1,user-scalable=no">
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone=no" name="format-detection" />
+    <meta content="email=no" name="format-detection" />
+    <title>积分订单详情</title>
+    <link rel="stylesheet" href="public/resource/css/weui.min.css">
+    <link rel="stylesheet" href="public/resource/css/jquery-weui.css">
+    <link href="public/common/common.css" rel="stylesheet">
+    <link href="public/resource/css/icon.css" rel="stylesheet">
+    <link href="css/confirmOrder.css" rel="stylesheet">
+    <script src="public/resource/js/jquery.min.js"></script>
+    <script src="public/resource/js/jquery-weui.js"></script>
+    <script src="public/resource/js/vue.min.js"></script>
+    <script src="js/codeDetail.js"></script>
+</head>
+
+<body>
+    <div class="viewports" id="app">
+        <div class="ui-content">
+            <div class="step-head" v-if="Msg.orderStatus == 1">
+                <img src="images/wait.png" />
+                <div>
+                    <p>待付款</p>
+                </div>
+            </div>
+            <div class="step-head" v-if="Msg.orderStatus == 6">
+                <img src="images/done.png" />
+                <div>
+                    <p>兑换成功</p>
+                    <p>待发货</p>
+                </div>
+            </div>
+            <div class="step-head" v-if="Msg.orderStatus == 2">
+                <img src="images/done.png" />
+                <div>
+                    <p>待收货</p>
+                </div>
+            </div>
+            <div class="step-head" v-if="Msg.orderStatus == 7">
+                <img src="images/done.png" />
+                <div>
+                    <p>已收货</p>
+                    <p>待评价</p>
+                </div>
+            </div>
+            <div class="step-head" v-if="Msg.orderStatus == 3 || Msg.orderStatus == 5">
+                <img src="images/apply.png" />
+                <div>
+                    <p>{{Msg.orderStatus==1? "待付款" : Msg.orderStatus==2? "待收货" : Msg.orderStatus==3? "已完成" : Msg.orderStatus==4?
+                        "退换货" : Msg.orderStatus==5? "已取消" : (Msg.orderStatus==6? "待发货" : "待评价")}}</p>
+                    <p>订单详情</p>
+                </div>
+            </div>
+            <div class="step-info">
+                <div class="step-in">
+                    <div class="sf-addr-info">
+                        <div class="sf-info">
+                            <div class="sf-name">
+                                <span class="ellipsis">{{Msg.c_name}}</span>
+                                <span class="phone ellipsis">{{Msg.c_phone}}</span>
+                            </div>
+                            <div class="sf-address ft-13">
+                                {{Msg.province}}{{Msg.city}}{{Msg.area}}{{Msg.town}}{{Msg.address}}</div>
+                        </div>
+                        <div class="addressInfo hide">
+                            <div class="sf-user">请添加收货地址</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="step-prod" v-for="item in Msg.goodsList">
+                <div class="step-tt">
+                    <img src="images/shop.png" />
+                    <span class="shopName">{{item.storeName}}</span>
+                </div>
+                <div class="prod-item">
+                    <div class="p-img-name">
+                        <div class="pro-img">
+                            <a href="productDetail.html">
+                                <image :src="item.examplePic" />
+                            </a>
+                        </div>
+                        <div class="pro-info-box">
+                            <div class="pro-name">
+                                <div class="clamp">{{item.goodsName}}</div>
+                            </div>
+                            <div class="pro-minimum">{{item.gdMsg}}</div>
+                            <div class="pro-price">
+                                <span class="left code">{{item.score}}</span>
+                                <span class="right">x{{item.size}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="step-com">
+                <div class="weui-cell" v-if="Msg.orderStatus == 4">
+                    <div class="weui-cell__bd left">退换原因</div>
+                    <div class="weui-cell__ft_in-access right trans">
+                        质量不好
+                    </div>
+                </div>
+                <div class="weui-cell">
+                    <div class="weui-cell__bd left">配送服务</div>
+                    <div class="weui-cell__ft_in-access right trans">
+                        {{Msg.wuliuStyle}}
+                    </div>
+                </div>
+                <div class="weui-cell">
+                    <div class="weui-cell__bd left">积分</div>
+                    <div class="weui-cell__ft_in-access right code">
+                        {{Msg.score}}
+                    </div>
+                </div>
+                <div class="weui-cell">
+                    <div class="weui-cell__bd left">运费</div>
+                    <div class="weui-cell__ft_in-access right">
+                        {{Msg.yunfei}}
+                    </div>
+                </div>
+            </div>
+            <div class="step-btn" v-if="Msg.orderStatus == 1">
+                <div class="wei-pay" @click="codePay()">积分兑换</div>
+            </div>
+            <div class="ui-bottom" v-if="Msg.orderStatus == 1">
+                <div class="ui-action">
+                    <div class="bottom">
+                        <div class="bottomBtn" @click="cancelOrder()">取消订单</div>
+                    </div>
+                </div>
+            </div>
+            <div class="bottomB" v-if="Msg.orderStatus == 2">
+                <div class="left" @click="seelogistics()">查看物流</div>
+                <div class="left sure" @click="confirmProduct()">确认收货</div>
+            </div>
+            <div class="bottomB" v-if="Msg.orderStatus == 7">
+                <div class="left sure" @click="goEvaluate()">去评价</div>
+            </div>
+            <div class="bottomB" v-if="Msg.orderStatus == 4">
+                <div class="left" @click="seelogistics()">查看物流</div>
+                <div class="left sure" @click="confirmProduct()">确认收货</div>
+            </div>
+            <div class="common-part pay-part">
+                <div class="common-dialog pay-dialog">
+                    <div class="dialog-title">请输入交易密码</div>
+                    <div class="dialog-title">(用户忘记交易密码，请与平台联系找回)</div>
+                    <div class="pay-money"><span class="pmoney"></span></div>
+                    <div class="pay-password">
+                        <input type="tel" maxlength="6" class="real-ipt">
+                        <div class="surface-ipts">
+                            <div class="surface-ipt">
+                                <input type="password" maxlength="1">
+                                <input type="password" maxlength="1">
+                                <input type="password" maxlength="1">
+                                <input type="password" maxlength="1">
+                                <input type="password" maxlength="1">
+                                <input type="password" maxlength="1">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="btns">
+                        <button class="cancel-btn">取消</button>
+                        <button class="confirm-btn">付款</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

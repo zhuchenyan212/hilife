@@ -1,0 +1,221 @@
+.ahead {
+    width: 100%;
+    height: 116px;
+    padding-top: 20px;
+    align-items: center;
+    background: #FE9844;
+    color: #fff;
+}
+
+.ahead p {
+    width: 100%;
+    height: 30px;
+    font-size: 14px;
+    text-align: center;
+}
+
+.aimg {
+    width: 22px;
+    height: 18px;
+}
+
+.ahead .pad {
+    margin-top: 15px;
+}
+
+.ahead p span {
+    font-size: 25px;
+    color: #fff;
+}
+
+.record {
+    font-size: 11px !important;
+    display: inline-block;
+    text-align: center;
+    padding: 3px 6px;
+    border: 1px solid #fff;
+    border-radius: 8px;
+    color: #fff;
+}
+
+article {
+    min-height: 6.67rem;
+    background: #fff;
+}
+
+.notice_wrap {
+    height: 35px;
+    padding-left: 12px;
+    line-height: 37px;
+    padding-right: 12px;
+}
+
+.aTitle {
+    display: inline-block;
+    width: 5px;
+    height: 18px;
+    background: #62B900;
+    border-radius: 10px;
+    margin-top: 10px;
+    margin-right: 5px;
+}
+
+.skr {
+    color: #878686;
+}
+
+.orange {
+    color: #FE9844;
+}
+
+.green {
+    color: #62B900;
+}
+
+.wrap {
+    width: 100%;
+    padding-left: 12px;
+    padding-right: 12px;
+    margin-bottom: 50px;
+}
+
+.itemMoney {
+    width: 100%;
+    height: 58px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 3px;
+    padding-top: 6px;
+    margin-top: 12px;
+    box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.16);
+}
+
+.itemMoney p {
+    width: 100%;
+    height: 20px;
+    margin-top: 2px;
+}
+
+.itemMoney p .left {
+    width: 80%;
+    height: 20px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.itemMoneys {
+    width: 100%;
+    height: 76px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 3px;
+    padding-top: 6px;
+    margin-top: 12px;
+    box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.16);
+}
+
+.itemMoneys p {
+    width: 100%;
+    height: 20px;
+    margin-top: 2px;
+}
+
+.itemMoneys p .left {
+    width: 80%;
+    height: 20px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+/*redeem.css*/
+
+.coin {
+    width: 100%;
+    height: 72px;
+    padding-top: 15px;
+    align-items: center;
+    background: #FE9844;
+    color: #fff;
+}
+
+.coin p {
+    width: 100%;
+    height: 30px;
+    font-size: 14px;
+    text-align: center;
+}
+
+.coin p span {
+    font-size: 25px;
+    color: #fff;
+}
+
+.my_cate .weui-cell_access {
+    height: 46px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 14px;
+    padding: 0 12px;
+    margin-bottom: 10px;
+    background: #fff;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.my_cate .weui-cell_access::before {
+    content: " ";
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+}
+
+.my_cate .weui-cell_access .weui-cell__bd {
+    display: flex;
+    align-items: center;
+    color: #2A2A2A;
+}
+
+.oran {
+    color: #FE9844;
+}
+
+.container .btnwrap {
+    width: 100%;
+    padding: 20px 12px;
+}
+
+.container .btnwrap .confirm {
+    width: 100%;
+    height: 44px;
+    line-height: 44px;
+    background: #62B900;
+    color: #fff;
+    font-size: 15px;
+    text-align: center;
+    border-radius: 4px;
+}
+
+/*withDraw.css*/
+
+.margin {
+    margin-left: 10px;
+}
+
+.red {
+    color: #FF1010;
+}
+
+.botton {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 0.45rem;
+    line-height: 0.45rem;
+    text-align: center;
+    background-color: #62B900;
+    color: #fff;
+    font-size: 0.14rem;
+    max-width: 6.4rem;
+}
