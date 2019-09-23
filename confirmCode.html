@@ -19,6 +19,23 @@
     <script src="public/resource/js/vue.min.js"></script>
     <script src="js/confirmCode.js"></script>
     <script src="http://res2.wx.qq.com/open/js/jweixin-1.4.0.js "></script>
+    <style type="text/css">
+        .advice {
+            height: 18px;
+            width: 18px;
+            display: inline-block;
+            background-image: url('images/roff.png');
+            background-repeat: no-repeat;
+            background-position: center;
+            vertical-align: middle;
+            margin-top: -4px;
+            background-size: cover;
+        }
+
+        input[type="radio"]:checked+.advice {
+            background-image: url('images/ron.png');
+        }
+    </style>
 </head>
 
 <body>
@@ -75,11 +92,19 @@
             <div class="step-com">
                 <div class="weui-cell">
                     <div class="weui-cell__bd left">配送服务</div>
-                    <div class="weui-cell__ft_in-access right trans">
-                        <select class="left select">
-                            <option value="0">快递运输</option>
-                            <option value="1">自提</option>
-                        </select>
+                    <div class="weui-cell__bd right">
+                        <label>
+                            <input type="radio" name="yunshu" id="adviceRadio2" @click="choose($event)" value="0"
+                                checked hidden />
+                            <label for="adviceRadio2" class="advice"></label>
+                            <span class="radio-name">快递</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="yunshu" id="adviceRadio1" @click="choose($event)" value="1"
+                                hidden />
+                            <label for="adviceRadio1" class="advice"></label>
+                            <span class="radio-name">自提</span>
+                        </label>
                     </div>
                 </div>
                 <div class="weui-cell">
@@ -91,7 +116,7 @@
                 <div class="weui-cell">
                     <div class="weui-cell__bd left">运费</div>
                     <div class="weui-cell__ft_in-access right">
-                        <span class="money">{{yunfei}}</span>
+                        ¥<span class="iteyun">{{parseFloat(yunfei).toFixed(2)}}</span>
                     </div>
                 </div>
             </div>

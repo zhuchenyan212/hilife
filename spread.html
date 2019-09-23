@@ -12,10 +12,12 @@
     <link href="public/common/common.css" rel="stylesheet">
     <link href="public/resource/css/icon.css" rel="stylesheet">
     <link href="css/spread.css" rel="stylesheet">
-    <script src="public/resource/js/jquery.min.js"></script>
+    <script src="public/resource/js/jquery-1.11.1.js"></script>
     <script src="public/resource/js/jquery-weui.js"></script>
     <script src="public/resource/js/vue.min.js"></script>
-    <script src="public/resource/js/qcode.js"></script>
+    <script src="public/resource/js/jquery.qrcode.js"></script>
+    <script src="public/resource/js/qrcode.js"></script>
+    <script src="public/resource/js/utf.js"></script>
     <script src="js/spread.js"></script>
     <style>
         input {
@@ -43,8 +45,8 @@
                 </div>
                 <div class="ui-share">
                     <input id="text" type="text" :data-id="id"
-                        :value="'https://www.kuailelifegroup.com/project/register.html?id='+id" />
-                    <div id="qrcode" class="erweima"></div>
+                        :value="'https://www.kuailelifegroup.com/project/register.html?id='+id" readonly />
+                    <div id="qrcodeCanvas" style="margin-top: 20px;"></div>
                     <div class="bottom_title">
                         <span>微信扫一扫，将二维码供他人扫码即可成为推荐人，快来分享吧！</span>
                     </div>

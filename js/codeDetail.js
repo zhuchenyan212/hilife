@@ -100,7 +100,7 @@ $(function () {
                                 }, (res) => {
                                     if (res.status == 0) {
                                         // 判断根据物流方式自提还是快递
-                                        if (app.Msg.wuliuStyle == "快递运输") {
+                                        if (app.Msg.wuliuStyle == "快递") {
                                             //调用微信支付运费
                                             $.getJSON("https://www.kuailelifegroup.com/qgl_admin/weixin/transferParam", {
                                                 "openid": JSON.parse(user).openid,

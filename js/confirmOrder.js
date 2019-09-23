@@ -16,7 +16,7 @@ $(function () {
             orderIds: [], //订单编号
             money: '',  //订单实际支付金额
             yunfei: '', //运费
-            select: '0', //运输方式
+            select: '0', //快递方式
             pMoney: JSON.parse(localStorage.getItem("user")).pMoney //自己的电子币数量
         },
         mounted() {
@@ -175,7 +175,7 @@ $(function () {
                     $.toast('请添加收货地址', 'text')
                     return
                 } else {
-                    //选择快递运输
+                    //选择快递
                     if (app.select == '0') {
                         //创建订单
                         $.getJSON("https://www.kuailelifegroup.com/qgl_admin/weixin/createOrder", {
@@ -190,7 +190,7 @@ $(function () {
                                 app.orderIds = res.orderIds
                                 $.getJSON("https://www.kuailelifegroup.com/qgl_admin/weixin/transferParam", {
                                     "openid": JSON.parse(user).openid,
-                                    "money": res.totalMoney,
+                                    "money": app.money,
                                     "orderId": res.orderIds[0],
                                 }, (res) => {
                                     if (res.status == 0) {
@@ -249,9 +249,10 @@ $(function () {
                                 console.log(res.orderIds)
                                 // 全局订单编号
                                 app.orderIds = res.orderIds
+                                var money = (app.money - app.yunfei).toFixed(2)
                                 $.getJSON("https://www.kuailelifegroup.com/qgl_admin/weixin/transferParam", {
                                     "openid": JSON.parse(user).openid,
-                                    "money": res.totalMoney,
+                                    "money": money,
                                     "orderId": res.orderIds[0],
                                 }, (res) => {
                                     if (res.status == 0) {
@@ -312,7 +313,7 @@ $(function () {
                     $.toast('请添加收货地址', 'text')
                     return
                 } else {
-                    //选择快递运输
+                    //选择快递
                     console.log(JSON.stringify(app.goodsList))
                     if (app.select == '0') {
                         //创建订单

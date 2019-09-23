@@ -86,11 +86,11 @@
                     <div class="weui-cell" v-else-if="item.status==2">
                         <a class="operate fff" :href="'codeDetail.html?orderId='+item.orderId">订单详情</a>
                         <a class="operate fff" href="javascript:;" @click="seelogistics(item.orderId)">查看物流</a>
-                        <!--<a class="operate fff" href="javascript:;" @click="applyTui(item.orderId)">退换货</a>-->
                         <a class="operate ooo" href="javascript:;" @click="confirmProduct(item.orderId)">确认收货</a>
                     </div>
                     <div class="weui-cell" v-else-if="item.status==3">
                         <a class="operate fff" :href="'codeDetail.html?orderId='+item.orderId">订单详情</a>
+                        <a class="operate fff" href="javascript:;" @click="deletOrder(item.orderId)">删除订单</a>
                     </div>
                     <div class="weui-cell" v-else-if="item.status==4">
                         <a class="operate fff" :href="'codeDetail.html?orderId='+item.orderId">订单详情</a>
@@ -99,6 +99,7 @@
                     </div>
                     <div class="weui-cell" v-else-if="item.status==5">
                         <a class="operate fff" :href="'codeDetail.html?orderId='+item.orderId">订单详情</a>
+                        <a class="operate fff" href="javascript:;" @click="deletOrder(item.orderId)">删除订单</a>
                     </div>
                     <div class="weui-cell" v-else-if="item.status==6">
                         <a class="operate fff" :href="'codeDetail.html?orderId='+item.orderId">订单详情</a>

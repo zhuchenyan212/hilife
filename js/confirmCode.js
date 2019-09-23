@@ -16,7 +16,8 @@ $(function () {
             orderIds: '', //订单id
             yunfei: '', //运费
             money: '',  //订单实际支付金额
-            totalMoney: '' //总金额
+            totalMoney: '', //总金额
+            select: '0', //快递方式
         },
         mounted() {
             this.applyList()
@@ -101,8 +102,8 @@ $(function () {
                     return
                 } else {
                     //输入交易密码进行积分兑换
-                    //选择快递运输
-                    if ($(".select option:selected").val() == 0) {
+                    //选择快递
+                    if (app.select == '0') {
                         for (var i = 0; i < app.goodsList.length; i++) {
                             app.goodsList[i].wuliuStyle = 0
                         }
@@ -286,7 +287,7 @@ $(function () {
                             }
                         })
                         //选择自提    
-                    } else if ($(".select option:selected").val() == 1) {
+                    } else if (app.select == '1') {
                         for (var i = 0; i < app.goodsList.length; i++) {
                             app.goodsList[i].wuliuStyle = 1
                         }
@@ -378,6 +379,15 @@ $(function () {
                             }
                         })
                     }
+                }
+            },
+            choose(e) {
+                app.select = $(e.target).val()
+                // 改变页面显示的运费数据
+                if ($(e.target).val() == 1) {
+                    $('.iteyun').text(0)
+                } else if ($(e.target).val() == 0) {
+                    $('.iteyun').text(app.yunfei)
                 }
             }
         }

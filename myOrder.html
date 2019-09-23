@@ -102,6 +102,7 @@
                     <div class="weui-cell" v-else-if="item.status==3">
                         <a class="operate fff" style="margin-right:0px;"
                             :href="'orderDetail.html?orderId='+item.orderId">订单详情</a>
+                        <a class="operate fff" style="margin-right:0px;" href="javascript:;" @click="deletOrder(item.orderId)">删除订单</a>
                     </div>
                     <div class="weui-cell" v-else-if="item.status==4">
                         <a class="operate fff" :href="'orderDetail.html?orderId='+item.orderId">订单详情</a>
@@ -111,6 +112,7 @@
                     <div class="weui-cell" v-else-if="item.status==5">
                         <a class="operate fff" style="margin-right:0px;"
                             :href="'orderDetail.html?orderId='+item.orderId">订单详情</a>
+                        <a class="operate fff" style="margin-right:0px;" href="javascript:;" @click="deletOrder(item.orderId)">删除订单</a>
                     </div>
                     <div class="weui-cell" v-else-if="item.status==6">
                         <a class="operate fff" style="margin-right:0px;"

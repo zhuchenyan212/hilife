@@ -20,11 +20,15 @@ $(function () {
                 that.userName = JSON.parse(user).userName
                 that.pic = JSON.parse(user).pic
                 that.level = JSON.parse(user).level
-                var qrcode = new QRCode(document.getElementById("qrcode"), {
-                    width: 188,
-                    height: 188
+                jQuery('#qrcodeCanvas').qrcode({
+                    render: "canvas",
+                    text: 'https://www.kuailelifegroup.com/project/register.html?id=' + JSON.parse(user).id + "&userName=" + JSON.parse(user).userName,
+                    width: "188",
+                    height: "188",
+                    background: "#fff",
+                    foreground: "#000000",
+                    src: 'images/logo.png'
                 });
-                qrcode.makeCode('https://www.kuailelifegroup.com/project/register.html?id=' + JSON.parse(user).id + "&userName=" + JSON.parse(user).userName);
             }
         }
     })

@@ -72,7 +72,23 @@
              seelogistics(orderId) {
                  //  查看物流
                  window.location.href = "logistics.html?orderId=" + orderId
-             }
+             },
+             deletOrder(orderId) {
+                //删除订单
+                $.getJSON("https://www.kuailelifegroup.com/qgl_admin/weixin/deleteThisOrder", {
+                    "orderId": orderId
+                }, (res) => {
+                    if (res.status == 0) {
+                        $.toast('删除订单成功', 'text')
+                        setTimeout(() => {
+                            //原地刷新
+                            location.reload();
+                        }, 1000)
+                    } else {
+                        $.toast('请求失败请稍后', 'text')
+                    }
+                })
+            }
          }
      })
  })

@@ -7,7 +7,6 @@ $(function () {
         return null;
     }
 
-
     // 选择收货地址
     var $town = $('#demo3 select[name="town"]');
     var townFormat = function (info) {
@@ -71,11 +70,12 @@ $(function () {
             $.toast('请填写详细地址', 'text')
             return
         } else {
+            var id = getUrlParams('id')
             $.ajax({
                 url: "https://www.kuailelifegroup.com/qgl_admin/weixin/editAddress",
                 traditional: true,
                 data: {
-                    "id": JSON.parse(user).id,
+                    "id": id,
                     "c_name": $('.username').val(),
                     "c_phone": $('.number').val(),
                     "provinces": JSON.stringify(address),
