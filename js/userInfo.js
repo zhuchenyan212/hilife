@@ -145,6 +145,10 @@ $(function () {
                         })
                     }
                 })
+            },
+            signOut() {
+                //退出登录
+                window.location.href="login.html"
             }
         }
     })

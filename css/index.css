@@ -111,7 +111,7 @@
 
 .container .ui-grids .ui_grid-label {
     text-align: center;
-    font-size: 14px;
+    font-size: 16px;
     margin-top: 8px;
 }
 
@@ -193,7 +193,7 @@
 
 .container .p-list .p-item {
     width: 49%;
-    height: 280px;
+    height: 285px;
     margin-top: 10px;
     background: #fff;
     box-sizing: border-box;
@@ -209,8 +209,8 @@
 }
 
 .container .p-list .p-item .p-name {
-    height: 40px;
-    font-size: 14px;
+    height: 45px;
+    font-size: 15px;
     padding: 0px 8px 0;
     box-sizing: border-box;
     overflow: hidden;

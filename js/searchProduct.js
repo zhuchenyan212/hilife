@@ -19,11 +19,10 @@ $(function () {
                 var key = this.getUrlParams('searchKey')
                 $('.search-bar-input').val(key)
                 //请求商品列表信息
-                $.getJSON("https://www.kuailelifegroup.com/qgl_admin/weixin/areaGoodsList", {
-                    'type': 2,
+                $.getJSON("https://www.kuailelifegroup.com/qgl_admin/weixin/homePageSearch", {
                     'sort': 0,
                     'ad': 1,
-                    'seachkey': key
+                    'goodsName': key
                 }, (res) => {
                     if (res.status == 0) {
                         app.goodsList = res.goodsList
@@ -48,11 +47,10 @@ $(function () {
                     $(this).siblings().removeClass("active")
                 });
                 //请求商品列表信息
-                $.getJSON("https://www.kuailelifegroup.com/qgl_admin/weixin/areaGoodsList", {
-                    'type': 2,
+                $.getJSON("https://www.kuailelifegroup.com/qgl_admin/weixin/homePageSearch", {
                     'sort': 0,
                     'ad': 1,
-                    'seachkey': key
+                    'goodsName': key
                 }, (res) => {
                     if (res.status == 0) {
                         app.goodsList = res.goodsList
@@ -70,11 +68,10 @@ $(function () {
                     $(this).siblings().removeClass("active")
                     if ($('.sales')[0].src.search("images/off.png") != -1) {
                         $('.sales')[0].src = "images/up.png";
-                        $.getJSON("https://www.kuailelifegroup.com/qgl_admin/weixin/areaGoodsList", {
-                            'type': 2,
+                        $.getJSON("https://www.kuailelifegroup.com/qgl_admin/weixin/homePageSearch", {
                             'sort': 1,
                             'ad': 1,
-                            'seachkey': key
+                            'goodsName': key
                         }, (res) => {
                             if (res.status == 0) {
                                 app.goodsList = res.goodsList
@@ -88,11 +85,10 @@ $(function () {
                 if ($('.sales')[0].src.search("images/up.png") != -1) {
                     $('.sales')[0].src = "images/down.png";
                     //请求商品列表信息
-                    $.getJSON("https://www.kuailelifegroup.com/qgl_admin/weixin/areaGoodsList", {
-                        'type': 2,
+                    $.getJSON("https://www.kuailelifegroup.com/qgl_admin/weixin/homePageSearch", {
                         'sort': 1,
                         'ad': 2,
-                        'seachkey': key
+                        'goodsName': key
                     }, (res) => {
                         if (res.status == 0) {
                             app.goodsList = res.goodsList
@@ -103,11 +99,10 @@ $(function () {
                 } else if ($('.sales')[0].src.search("images/down.png") != -1) {
                     $('.sales')[0].src = "images/up.png"
                     //请求商品列表信息
-                    $.getJSON("https://www.kuailelifegroup.com/qgl_admin/weixin/areaGoodsList", {
-                        'type': 2,
+                    $.getJSON("https://www.kuailelifegroup.com/qgl_admin/weixin/homePageSearch", {
                         'sort': 1,
                         'ad': 1,
-                        'seachkey': key
+                        'goodsName': key
                     }, (res) => {
                         if (res.status == 0) {
                             app.goodsList = res.goodsList
@@ -126,11 +121,10 @@ $(function () {
                     $(this).siblings().removeClass("active")
                 });
                 //  请求商品列表信息
-                $.getJSON("https://www.kuailelifegroup.com/qgl_admin/weixin/areaGoodsList", {
-                    'type': 2,
+                $.getJSON("https://www.kuailelifegroup.com/qgl_admin/weixin/homePageSearch", {
                     'sort': 0,
                     'ad': 2,
-                    'seachkey': key
+                    'goodsName': key
                 }, (res) => {
                     if (res.status == 0) {
                         app.goodsList = res.goodsList
@@ -148,11 +142,10 @@ $(function () {
                     $(this).siblings().removeClass("active")
                     if ($('.prices')[0].src.search("images/off.png") != -1) {
                         $('.prices')[0].src = "images/up.png";
-                        $.getJSON("https://www.kuailelifegroup.com/qgl_admin/weixin/areaGoodsList", {
-                            'type': 2,
+                        $.getJSON("https://www.kuailelifegroup.com/qgl_admin/weixin/homePageSearch", {
                             'sort': 2,
                             'ad': 1,
-                            'seachkey': key
+                            'goodsName': key
                         }, (res) => {
                             if (res.status == 0) {
                                 app.goodsList = res.goodsList
@@ -165,11 +158,10 @@ $(function () {
                 if ($('.prices')[0].src.search("images/up.png") != -1) {
                     $('.prices')[0].src = "images/down.png";
                     //请求商品列表信息
-                    $.getJSON("https://www.kuailelifegroup.com/qgl_admin/weixin/areaGoodsList", {
-                        'type': 2,
+                    $.getJSON("https://www.kuailelifegroup.com/qgl_admin/weixin/homePageSearch", {
                         'sort': 2,
                         'ad': 2,
-                        'seachkey': key
+                        'goodsName': key
                     }, (res) => {
                         if (res.status == 0) {
                             app.goodsList = res.goodsList
@@ -180,11 +172,10 @@ $(function () {
                 } else if ($('.prices')[0].src.search("images/down.png") != -1) {
                     $('.prices')[0].src = "images/up.png"
                     //请求商品列表信息
-                    $.getJSON("https://www.kuailelifegroup.com/qgl_admin/weixin/areaGoodsList", {
-                        'type': 2,
+                    $.getJSON("https://www.kuailelifegroup.com/qgl_admin/weixin/homePageSearch", {
                         'sort': 2,
                         'ad': 1,
-                        'seachkey': key
+                        'goodsName': key
                     }, (res) => {
                         if (res.status == 0) {
                             app.goodsList = res.goodsList

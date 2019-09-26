@@ -126,8 +126,8 @@
 
 .search-list-wrap .p-list .p-item .p-name {
     height: 40px;
-    font-size: 14px;
-    padding: 2px 8px 0;
+    font-size: 15px;
+    padding: 0px 8px 0;
     box-sizing: border-box;
     overflow: hidden;
     text-overflow: ellipsis;
