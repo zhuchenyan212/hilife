@@ -148,7 +148,9 @@ $(function () {
             },
             signOut() {
                 //退出登录
-                window.location.href="login.html"
+                window.location.href = "login.html"
+                //清除页面缓存
+                localStorage.clear();
             }
         }
     })

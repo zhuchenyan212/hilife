@@ -8,9 +8,8 @@ $(function () {
             password: '',
         },
         mounted() {
-            var user = localStorage.getItem("user")
-            if(JSON.parse(user).id !="" && JSON.parse(user).id != undefined){
-                window.location.href="index.html"
+            if (JSON.parse(localStorage.getItem("user")).id != null && JSON.parse(localStorage.getItem("user")).id != undefined) {
+                window.location.href = "index.html"
             }
         },
         methods: {
