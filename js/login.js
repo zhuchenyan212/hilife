@@ -7,7 +7,12 @@ $(function () {
             cellphone: '',
             password: '',
         },
-        mounted() { },
+        mounted() {
+            var user = localStorage.getItem("user")
+            if(JSON.parse(user).id !="" && JSON.parse(user).id != undefined){
+                window.location.href="index.html"
+            }
+        },
         methods: {
             login() {
                 var that = this;

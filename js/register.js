@@ -11,6 +11,10 @@ $(function () {
             userName: ''
         },
         mounted() {
+            var user = localStorage.getItem("user")
+            if (JSON.parse(user).id != "" && JSON.parse(user).id != undefined) {
+                window.location.href = "index.html"
+            }
             this.Edit()
         },
         methods: {

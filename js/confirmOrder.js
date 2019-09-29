@@ -105,6 +105,7 @@ $(function () {
                         type: "get",
                         dataType: 'json',
                         success: function (res) {
+                            // alert(res.status)
                             if (res.status == 0) {
                                 app.shoppingInfo = res
                                 app.goodsList = res.goodsList
@@ -181,18 +182,20 @@ $(function () {
                         $.getJSON("https://www.kuailelifegroup.com/qgl_admin/weixin/createOrder", {
                             "cid": JSON.parse(user).id,
                             "storeList": JSON.stringify(app.goodsList),
-                            "addressId": app.addressId,
                             "type": 3,
+                            "addressId": app.addressId,
+                            "yunfei": app.yunfei
                         }, (res) => {
+                            // alert(res.status)
                             if (res.status == 0) {
                                 // 全局订单编号
-                                console.log(res.orderIds)
                                 app.orderIds = res.orderIds
                                 $.getJSON("https://www.kuailelifegroup.com/qgl_admin/weixin/transferParam", {
                                     "openid": JSON.parse(user).openid,
                                     "money": app.money,
                                     "orderId": res.orderIds[0],
                                 }, (res) => {
+                                    // alert(res.package)
                                     if (res.status == 0) {
                                         // 调用微信支付
                                         function onBridgeReady() {
@@ -224,7 +227,17 @@ $(function () {
                                                     } else if (res.err_msg == "get_brand_wcpay_request:cancel") {
                                                     }
                                                 });
-                                        } onBridgeReady();
+                                        }
+                                        if (typeof WeixinJSBridge == "undefined") {
+                                            if (document.addEventListener) {
+                                                document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
+                                            } else if (document.attachEvent) {
+                                                document.attachEvent('WeixinJSBridgeReady', onBridgeReady);
+                                                document.attachEvent('onWeixinJSBridgeReady', onBridgeReady);
+                                            }
+                                        } else {
+                                            onBridgeReady();
+                                        }
                                     } else {
                                         $.toast('请求失败请稍后', 'text')
                                     }
@@ -233,8 +246,8 @@ $(function () {
                                 $.toast('请求失败请稍后', 'text')
                             }
                         })
-                        //选择自提    
                     } else if (app.select == '1') {
+                        //选择自提                         
                         for (var i = 0; i < app.goodsList.length; i++) {
                             app.goodsList[i].wuliuStyle = 1
                         }
@@ -242,11 +255,12 @@ $(function () {
                         $.getJSON("https://www.kuailelifegroup.com/qgl_admin/weixin/createOrder", {
                             "cid": JSON.parse(user).id,
                             "storeList": JSON.stringify(app.goodsList),
-                            "addressId": app.addressId,
                             "type": 3,
+                            "addressId": app.addressId,
+                            "yunfei": 0
                         }, (res) => {
+                            // alert(res.status)
                             if (res.status == 0) {
-                                console.log(res.orderIds)
                                 // 全局订单编号
                                 app.orderIds = res.orderIds
                                 var money = (app.money - app.yunfei).toFixed(2)
@@ -255,6 +269,7 @@ $(function () {
                                     "money": money,
                                     "orderId": res.orderIds[0],
                                 }, (res) => {
+                                    // alert(res.package)
                                     if (res.status == 0) {
                                         // 调用微信支付
                                         function onBridgeReady() {
@@ -320,8 +335,9 @@ $(function () {
                         $.getJSON("https://www.kuailelifegroup.com/qgl_admin/weixin/createOrder", {
                             "cid": JSON.parse(user).id,
                             "storeList": JSON.stringify(app.goodsList),
-                            "addressId": app.addressId,
                             "type": 4,
+                            "addressId": app.addressId,
+                            "yunfei": app.yunfei
                         }, (res) => {
                             if (res.status == 0) {
                                 // 打开支付密码对话框并生成订单
@@ -417,8 +433,9 @@ $(function () {
                         $.getJSON("https://www.kuailelifegroup.com/qgl_admin/weixin/createOrder", {
                             "cid": JSON.parse(user).id,
                             "storeList": JSON.stringify(app.goodsList),
-                            "addressId": app.addressId,
                             "type": 4,
+                            "addressId": app.addressId,
+                            "yunfei": 0
                         }, (res) => {
                             if (res.status == 0) {
                                 // 打开支付密码对话框并生成订单

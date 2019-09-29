@@ -111,8 +111,9 @@ $(function () {
                         $.getJSON("https://www.kuailelifegroup.com/qgl_admin/weixin/createOrder", {
                             "cid": JSON.parse(user).id,
                             "storeList": JSON.stringify(app.goodsList),
-                            "addressId": app.addressId,
                             "type": 2,
+                            "addressId": app.addressId,
+                            "yunfei": app.yunfei
                         }, (res) => {
                             if (res.status == 0) {
                                 // 全局订单编号
@@ -295,8 +296,9 @@ $(function () {
                         $.getJSON("https://www.kuailelifegroup.com/qgl_admin/weixin/createOrder", {
                             "cid": JSON.parse(user).id,
                             "storeList": JSON.stringify(app.goodsList),
-                            "addressId": app.addressId,
                             "type": 2,
+                            "addressId": app.addressId,
+                            "yunfei": 0
                         }, (res) => {
                             if (res.status == 0) {
                                 // 打开支付密码对话框并生成订单

@@ -90,7 +90,7 @@
                 </div>
             </div>
             <div class="step-com">
-                <div class="weui-cell" id="select">
+                <div class="weui-cell clear" id="select">
                     <div class="weui-cell__bd left">配送服务</div>
                     <div class="weui-cell__bd right">
                         <label>
@@ -108,34 +108,34 @@
                     </div>
                 </div>
                 <div class="step-com">
-                    <div class="weui-cell">
+                    <div class="weui-cell clear">
                         <div class="weui-cell__bd left">运费</div>
                         <div class="weui-cell__ft_in-access right">
                             ¥<span class="iteyun">{{parseFloat(yunfei).toFixed(2)}}</span>
                         </div>
                     </div>
                 </div>
-                <div class="weui-cell">
+                <div class="weui-cell clear">
                     <div class="weui-cell__bd left">积分总计</div>
                     <div class="weui-cell__ft_in-access right code">
                         {{shoppingInfo.score}}
                     </div>
                 </div>
-                <div class="weui-cell">
+                <div class="weui-cell clear">
                     <div class="weui-cell__bd left">电子币总计</div>
                     <div class="weui-cell__ft_in-access right">
                         {{parseFloat(shoppingInfo.totalPMoney).toFixed(2)}}sp
                     </div>
                 </div>
-                <div class="weui-cell">
+                <div class="weui-cell clear">
                     <div class="weui-cell__bd left">商品总额</div>
                     <div class="weui-cell__ft_in-access right">
                         ¥{{parseFloat(shoppingInfo.totalPrice).toFixed(2)}}
                     </div>
                 </div>
-                <div class="weui-cell">
+                <div class="weui-cell clear">
                     <div class="weui-cell__ft_in-access right">
-                        合计：¥<span class="money">{{money}}</span>
+                        合计：¥<span class="money">{{parseFloat(money).toFixed(2)}}</span>
                     </div>
                 </div>
             </div>
