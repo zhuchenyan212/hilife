@@ -80,18 +80,22 @@
             <div class="my_section">
                 <div class="my_order_desc">
                     <a class="menu-item" href="waitPay.html">
+                        <span class="potit" v-if="waitPay > 0">{{waitPay}}</span>
                         <img class="iconfont" src="images/h1.png" />
                         <span>待付款</span>
                     </a>
                     <a class="menu-item" href="waitDeliver.html">
+                        <span class="potit" v-if="waitSend > 0">{{waitSend}}</span>
                         <img class="iconfont" src="images/h2.png" />
                         <span>待发货</span>
                     </a>
                     <a class="menu-item" href="waitReceipt.html">
+                        <span class="potit" v-if="waitReceive > 0">{{waitReceive}}</span>
                         <img class="iconfont" src="images/h3.png" />
                         <span>待收货</span>
                     </a>
                     <a class="menu-item" href="waitEvaluate.html">
+                        <span class="potit" v-if="waitEvaluate > 0">{{waitEvaluate}}</span>
                         <img class="iconfont" src="images/h4.png" />
                         <span>待评价</span>
                     </a>

@@ -85,7 +85,6 @@ $(function () {
                 var user = localStorage.getItem("user")
                 console.log(orderId)
                 if (orderId != undefined) {
-                    //调用微信支付
                     $.getJSON("https://www.kuailelifegroup.com/qgl_admin/weixin/transferParam", {
                         "openid": JSON.parse(user).openid,
                         "money": app.Msg.total,
@@ -109,7 +108,8 @@ $(function () {
                                             //res.err_msg将在用户支付成功后返回ok，但并不保证它绝对可靠。
                                             //创建订单 
                                             $.getJSON("https://www.kuailelifegroup.com/qgl_admin/weixin/payOverOrder", {
-                                                "orderIds": JSON.stringify(orderId),
+                                                "orderIds": orderId,
+                                                "type": 1
                                             }, (res) => {
                                                 if (res.status == 0) {
                                                     //  支付成功后跳转
@@ -119,7 +119,6 @@ $(function () {
                                                 }
                                             })
                                         } else if (res.err_msg == "get_brand_wcpay_request:cancel") {
-
                                         }
                                     });
                             } onBridgeReady();

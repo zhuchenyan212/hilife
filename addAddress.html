@@ -16,7 +16,7 @@
     <link rel="stylesheet" type="text/css" href="public/resource/css/cssreset-min.css">
     <link href="css/userInfo.css" rel="stylesheet">
     <script src="public/resource/js/jquery.min.js"></script>
-    <script src="public/resource/js/jquery.citys.js"></script>
+    <!-- <script src="public/resource/js/jquery.citys.js"></script> -->
     <script src="public/resource/js/jquery-weui.js"></script>
     <script src="js/addAddress.js"></script>
     <style>
@@ -55,10 +55,18 @@
                         <div class="weui-cell__bd">地区</div>
                         <div id="select" style="position: relative;width: 90% !important;text-align: right">
                             <div id="demo3" class="citys">
-                                <select name="province"></select>
-                                <select name="city"></select>
-                                <select name="area"></select>
-                                <select name="town"></select>
+                                <select name="province" class="province">
+                                    <option value="">请选择省</option>
+                                </select>
+                                <select name="city" class="city">
+                                    <option value="">请选择市</option>
+                                </select>
+                                <select name="area" class="area">
+                                    <option value="">请选择区</option>
+                                </select>
+                                <select name="town" class="town">
+                                    <option value="">请选择镇</option>
+                                </select>
                             </div>
                         </div>
                     </a>

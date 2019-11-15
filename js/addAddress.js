@@ -1,33 +1,69 @@
 $(function () {
-    // 选择收货地址
-    var $town = $('#demo3 select[name="town"]');
-    var townFormat = function (info) {
-        $town.hide().empty();
-        if (info['code'] % 1e4 && info['code'] < 7e5) {	//是否为“区”且不是港澳台地区
+    //请求省份
+    $.ajax({
+        url: 'https://www.kuailelifegroup.com/qgl_admin/weixin/getLocations?type=1',
+        dataType: 'json',
+        success: function (province) {
+            for (i in province.locations) {
+                $('#demo3 select[name="province"]').append('<option value="' + province.locations[i].id + '">' + province.locations[i].province + '</option>');
+            }
+        }
+    });
+
+    $(".province").change(function () {
+        var id = $('#demo3 select[name="province"]').find("option:selected").val()
+        if (id != undefined && id != "") {
+            //请求市区
             $.ajax({
-                url: 'https://passer-by.com/data_location/town/' + info['code'] + '.json',
+                url: 'https://www.kuailelifegroup.com/qgl_admin/weixin/getLocations?type=2&id=' + id,
                 dataType: 'json',
-                success: function (town) {
-                    $town.show();
-                    for (i in town) {
-                        $town.append('<option value="' + i + '">' + town[i] + '</option>');
-                    }
+                success: function (city) {
+                    var str1 = ''
+                    for (i in city.locations) {
+                        str1 += '<option value="' + city.locations[i].id + '">' + city.locations[i].city + '</option>';
+                    } // $('#demo3 select[name="city"]').append('<option value="' + city.locations[i].id + '">' + city.locations[i].city + '</option>');
+                    $('.city').html(str1);
                 }
             });
         }
-    };
-
-    $('#demo3').citys({
-        province: '',
-        city: '',
-        area: '',
-        onChange: function (info) {
-            townFormat(info);
+    })
+    $('.city').change(function () {
+        var id = $('#demo3 select[name="city"]').find("option:selected").val()
+        if (id != undefined && id != "") {
+            //请求县
+            $.ajax({
+                url: 'https://www.kuailelifegroup.com/qgl_admin/weixin/getLocations?type=3&id=' + id,
+                dataType: 'json',
+                success: function (area) {
+                    var str2 = ''
+                    for (i in area.locations) {
+                        // $('#demo3 select[name="area"]').append('<option value="' + area.locations[i].id + '">' + area.locations[i].area + '</option>');
+                        str2 += '<option value="' + area.locations[i].id + '">' + area.locations[i].area + '</option>';
+                    }
+                    $('.area').html(str2);
+                }
+            });
         }
-    }, function (api) {
-        var info = api.getInfo();
-        townFormat(info);
-    });
+    })
+
+    $('.area').change(function () {
+        var id = $('#demo3 select[name="area"]').find("option:selected").val()
+        if (id != undefined && id != "") {
+            //请求镇
+            $.ajax({
+                url: 'https://www.kuailelifegroup.com/qgl_admin/weixin/getLocations?type=4&id=' + id,
+                dataType: 'json',
+                success: function (town) {
+                    var str3 = ''
+                    for (i in town.locations) {
+                        // $('#demo3 select[name="town"]').append('<option value="' + town.locations[i].id + '">' + town.locations[i].town + '</option>');
+                        str3 += '<option value="' + town.locations[i].id + '">' + town.locations[i].town + '</option>';
+                    }
+                    $('.town').html(str3);
+                }
+            });
+        }
+    })
 
     function getUrlParams(name) {
         var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
@@ -43,6 +79,7 @@ $(function () {
         address.push($('#demo3 select[name="city"]').find("option:selected").text())
         address.push($('#demo3 select[name="area"]').find("option:selected").text())
         address.push($('#demo3 select[name="town"]').find("option:selected").text())
+        console.log($('#demo3 select[name="province"]').find("option:selected").text())
         if ($('.username').val() == '') {
             $.toast('请填写收货人', 'text')
             return
@@ -51,6 +88,9 @@ $(function () {
             return
         } else if (!(/^1[34578]\d{9}$/.test($('.number').val()))) {
             $.toast('手机号输入有误', 'text')
+            return
+        } else if ($('#demo3 select[name="province"]').find("option:selected").text() == '') {
+            $.toast('请选择地区', 'text')
             return
         } else if ($('.detailed').val() == '') {
             $.toast('请填写详细地址', 'text')

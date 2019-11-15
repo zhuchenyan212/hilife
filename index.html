@@ -23,8 +23,8 @@
 </head>
 
 <body>
-    <div class="viewports">
-        <div class="container" id="app">
+    <div class="viewports" id="app">
+        <div class="container">
             <!--商品搜索-->
             <div class="search-wrap">
                 <div class="search-bar-wrap">
@@ -115,8 +115,8 @@
             <!--商品专区-->
             <div class="p-wrap">
                 <div class="p-list clear">
-                    <div class="p-item" v-for="item in goodsArea">
-                        <a :href="'productDetail.html?id='+item.gid">
+                    <div class="p-item" v-for="item in goodsArea" @click="getheight(event)">
+                        <a class="getheight" :href="'productDetail.html?id='+item.gid">
                             <div><img class="bgImg" :src="item.examplePic" /></div>
                             <div class="p-name">{{item.goodsName}}</div>
                             <div class="p-money">电子币：{{parseFloat(item.lowestPMoney).toFixed(2)}}sp</div>
@@ -141,8 +141,8 @@
             <!--特惠专区-->
             <div class="p-wrap">
                 <div class="p-list clear">
-                    <div class="p-item" v-for="item in goodsList">
-                        <a :href="'productDetail.html?id='+item.gid">
+                    <div class="p-item" v-for="item in goodsList" @click="getheight(event)">
+                        <a class="getheight" :href="'productDetail.html?id='+item.gid">
                             <div><img class="bgImg" :src="item.examplePic" /></div>
                             <div class="p-name">{{item.goodsName}}</div>
                             <div class="p-money">电子币：{{parseFloat(item.lowestPMoney).toFixed(2)}}sp</div>

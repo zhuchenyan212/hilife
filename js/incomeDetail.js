@@ -5,6 +5,8 @@ $(function () {
         data: {
             myList: {}, //收益明细信息
             countDate: '', //结算日
+            date: '',  //选择日期
+            level: '', //日期
         },
         mounted() {
             this.show()
@@ -20,13 +22,6 @@ $(function () {
             show() {
                 var user = localStorage.getItem("user")
                 var level = this.getUrlParams('level')
-                var date = new Date();
-                var year = date.getFullYear();
-                var month = date.getMonth() + 1;
-                month = (month < 10 ? "0" + month : month);
-                var mydate = (year.toString() + '-' + month.toString());
-                console.log(mydate)
-                $('#test3').val(mydate)
                 //执行一个laydate实例
                 laydate.render({
                     elem: '#test3',
@@ -46,6 +41,8 @@ $(function () {
                                 if (res.status == 0) {
                                     app.myList = res.vipList
                                     app.countDate = res.countDate
+                                    $('#test3').val(res.countDate)
+                                    console.log(res.countDate)
                                 } else {
                                     $.toast('请求失败请稍后', 'text')
                                 }
@@ -57,11 +54,16 @@ $(function () {
             applyList() {
                 var user = localStorage.getItem("user")
                 var level = this.getUrlParams('level')
+                var date = this.getUrlParams('date')
+                var that = this;
+                that.date = date
+                that.level = level
                 $.ajax({
                     url: "https://www.kuailelifegroup.com/qgl_admin/weixin/profitDetail",
                     data: {
                         "cid": JSON.parse(user).id,
                         "location": level,
+                        "date": date
                     },
                     type: "get",
                     dataType: 'json',
@@ -69,6 +71,7 @@ $(function () {
                         if (res.status == 0) {
                             app.myList = res.vipList
                             app.countDate = res.countDate
+                            $('#test3').val(res.countDate)
                         } else {
                             $.toast('请求失败请稍后', 'text')
                         }

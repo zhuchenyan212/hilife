@@ -43,6 +43,14 @@ $(function () {
                         app.goodsList = res.goodsList
                         app.money = res.money
                         app.yunfei = res.yunfei
+                        app.addressId = res.addressId
+                        app.c_name = res.userName
+                        app.c_phone = res.cellphone
+                        app.province = res.province
+                        app.city = res.city
+                        app.area = res.area
+                        app.town = res.town
+                        app.address = res.address
                         //  请求运费
                         if (addressId != null && addressId != undefined && addressId != '') {
                             $.ajax({

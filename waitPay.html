@@ -86,7 +86,7 @@
                 </div>
                 <div class="p-list-product">
                     <div class="weuicell ft-13">
-                        <span class="ft-14">合计：</span><i class="ft-16">￥{{item.totalPrice}}</i>
+                        <span class="ft-14">合计：</span><i class="ft-16">￥{{parseFloat(item.totalPrice).toFixed(2)}}</i>
                     </div>
                     <div class="weui-cell">
                         <a class="operate fff" :href="'orderDetail.html?orderId='+item.orderId">订单详情</a>

@@ -29,12 +29,6 @@
                 <span><input type="text" class="layui-input" id="test3" placeholder="请选择年月"></span>
             </div>
             <section>
-                <div class="wrap hide">
-                    <div class="itemMoney">
-                        <span class="left ft-14 skr">2019年5月收益</span>
-                        <span class="right ft-12 red ">¥14168.00</span>
-                    </div>
-                </div>
                 <div class="notice_wrap">
                     <div class="div-vertical clear">
                         <div class="left ft-14 clear">
@@ -46,7 +40,8 @@
                 <div class="wrap">
                     <div class="itemMoney" @click="goDetail(0)">
                         <span class="left ft-14 skr">伯乐总收益</span>
-                        <span class="right ft-12 red ">¥{{myList.boleProfit}}<i class="icon-108 icon"></i></span>
+                        <span class="right ft-12 red ">¥{{parseFloat(myList.boleProfit).toFixed(2)}}<i
+                                class="icon-108 icon"></i></span>
                     </div>
                 </div>
                 <div class="notice_wrap">
@@ -60,11 +55,13 @@
                 <div class="wrap">
                     <div class="itemMoney" @click="goDetail(1)">
                         <span class="left ft-14 skr">一代店主消费收益</span>
-                        <span class="right ft-12 red">¥{{myList.firstProfit}}<i class="icon-108 icon"></i></span>
+                        <span class="right ft-12 red">¥{{parseFloat(myList.firstProfit).toFixed(2)}}<i
+                                class="icon-108 icon"></i></span>
                     </div>
                     <div class="itemMoney" style="margin-top: 12px;" @click="goDetail(2)">
                         <span class="left ft-14 skr">二代店主消费收益</span>
-                        <span class="right ft-12 red">¥{{myList.secondProfit}}<i class="icon-108 icon"></i></span>
+                        <span class="right ft-12 red">¥{{parseFloat(myList.secondProfit).toFixed(2)}}<i
+                                class="icon-108 icon"></i></span>
                     </div>
                 </div>
                 <div class="notice_wrap">
@@ -78,16 +75,17 @@
                 <div class="wrap">
                     <div class="itemMoney">
                         <span class="left ft-14 skr">绩效收益金额</span>
-                        <span class="right ft-12 red">¥{{myList.staticProfit}}</span>
+                        <span class="right ft-12 red">¥{{parseFloat(myList.staticProfit).toFixed(2)}}</span>
                     </div>
                     <div class="remark">
-                        备注：银卡店主绩效收益总金额到加入青橄榄店主金额就不再有绩效收益。金卡店主则不受此影响，可以无限享受
+                        备注：银卡店主绩效收益总金额达到购买银卡礼盒金额就终止，金卡店主则终身享受此收益
                     </div>
                 </div>
                 <div class="wrap">
                     <div class="itemMoney" @click="goDetail(4)">
                         <span class="left ft-14 skr">收益合计</span>
-                        <span class="right ft-12 red">¥{{myList.totalProfit}}<i class="icon-108 icon"></i></span>
+                        <span class="right ft-12 red">¥{{parseFloat(myList.totalProfit).toFixed(2)}}<i
+                                class="icon-108 icon"></i></span>
                     </div>
                 </div>
             </section>

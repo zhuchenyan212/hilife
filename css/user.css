@@ -259,7 +259,7 @@
 
 .my_section .my_order_desc {
     display: flex;
-    height: 72px;
+    height: 86px;
     font-size: 12px;
     background: #fff;
     align-items: center;
@@ -274,6 +274,21 @@
 .my_section .my_order_desc a {
     flex: 1;
     display: block;
+    text-align: center;
+    position: relative;
+}
+
+.potit {
+    position: absolute;
+    right: 4px;
+    top: -9px;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    line-height: 19px;
+    background: red;
+    color: #fff;
+    border-radius: 50%;
     text-align: center;
 }
 

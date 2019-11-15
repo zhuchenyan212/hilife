@@ -4,6 +4,7 @@ $(function () {
         el: "#app",
         data: {
             myList: {}, //我的收益信息
+            date: ''  //返回日期
         },
         mounted() {
             this.show()
@@ -19,18 +20,12 @@ $(function () {
             show() {
                 var user = localStorage.getItem("user")
                 var level = this.getUrlParams('level')
-                var date = new Date();
-                var year = date.getFullYear();
-                var month = date.getMonth() + 1;
-                month = (month < 10 ? "0" + month : month);
-                var mydate = (year.toString() +'-'+ month.toString());
-                $('#test3').val(mydate)
                 //执行一个laydate实例
                 laydate.render({
                     elem: '#test3',
                     type: 'month',
                     done: function (value, date, endDate) {
-                        console.log(value);
+                        app.date = value
                         $.ajax({
                             url: "https://www.kuailelifegroup.com/qgl_admin/weixin/myProfit",
                             data: {
@@ -43,6 +38,8 @@ $(function () {
                             success: function (res) {
                                 if (res.status == 0) {
                                     app.myList = res
+                                    app.date = res.date
+                                    $('#test3').val(res.date)
                                 } else {
                                     $.toast('请求失败请稍后', 'text')
                                 }
@@ -54,25 +51,50 @@ $(function () {
             applyList() {
                 var user = localStorage.getItem("user")
                 var level = this.getUrlParams('level')
-                $.ajax({
-                    url: "https://www.kuailelifegroup.com/qgl_admin/weixin/myProfit",
-                    data: {
-                        "cid": JSON.parse(user).id,
-                        "level": level
-                    },
-                    type: "get",
-                    dataType: 'json',
-                    success: function (res) {
-                        if (res.status == 0) {
-                            app.myList = res
-                        } else {
-                            $.toast('请求失败请稍后', 'text')
+                var date = this.getUrlParams('date')
+                if (date != null) {
+                    $.ajax({
+                        url: "https://www.kuailelifegroup.com/qgl_admin/weixin/myProfit",
+                        data: {
+                            "cid": JSON.parse(user).id,
+                            "level": level,
+                            "date": date
+                        },
+                        type: "get",
+                        dataType: 'json',
+                        success: function (res) {
+                            if (res.status == 0) {
+                                app.myList = res
+                                app.date = res.date
+                                $('#test3').val(res.date)
+                            } else {
+                                $.toast('请求失败请稍后', 'text')
+                            }
                         }
-                    }
-                })
+                    })
+                } else {
+                    $.ajax({
+                        url: "https://www.kuailelifegroup.com/qgl_admin/weixin/myProfit",
+                        data: {
+                            "cid": JSON.parse(user).id,
+                            "level": level
+                        },
+                        type: "get",
+                        dataType: 'json',
+                        success: function (res) {
+                            if (res.status == 0) {
+                                app.myList = res
+                                app.date = res.date
+                                $('#test3').val(res.date)
+                            } else {
+                                $.toast('请求失败请稍后', 'text')
+                            }
+                        }
+                    })
+                }
             },
             goDetail(level) {
-                window.location.href = 'incomeDetail.html?level=' + level
+                window.location.href = 'incomeDetail.html?level=' + level + '&date=' + app.date
             }
         }
     })

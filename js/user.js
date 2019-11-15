@@ -6,7 +6,11 @@ $(function () {
             customerIndex: {}, //请求数据
             self_consumption: '', //自我消费金额
             my_self_consumption: '', //已消费
-            signIn: '' //是否签到
+            signIn: '', //是否签到
+            waitPay: '',
+            waitSend: '',
+            waitReceive: '',
+            waitEvaluate: '',
         },
         mounted() {
             this.applyUser()
@@ -30,6 +34,11 @@ $(function () {
                                 app.self_consumption = res.self_consumption
                                 app.my_self_consumption = res.my_self_consumption
                                 app.signIn = res.signIn
+                                // 显示订单
+                                app.waitPay = res.waitPay
+                                app.waitSend = res.waitSend
+                                app.waitReceive = res.waitReceive
+                                app.waitEvaluate = res.waitEvaluate
                                 $('#len').css('width', "" + res.my_self_consumption + "%")
                             } else {
                                 $.toast('请求失败请稍后', 'text')

@@ -46,6 +46,14 @@ $(function () {
                             app.goodsList = res.goodsList
                             app.money = res.money
                             app.yunfei = res.yunfei
+                            app.addressId = res.addressId
+                            app.c_name = res.userName
+                            app.c_phone = res.cellphone
+                            app.province = res.province
+                            app.city = res.city
+                            app.area = res.area
+                            app.town = res.town
+                            app.address = res.address
                             // 请求运费
                             if (addressId != null && addressId != undefined && addressId != '') {
                                 $.ajax({
@@ -105,12 +113,19 @@ $(function () {
                         type: "get",
                         dataType: 'json',
                         success: function (res) {
-                            // alert(res.status)
                             if (res.status == 0) {
                                 app.shoppingInfo = res
                                 app.goodsList = res.goodsList
                                 app.money = res.money
                                 app.yunfei = res.yunfei
+                                app.addressId = res.addressId
+                                app.c_name = res.userName
+                                app.c_phone = res.cellphone
+                                app.province = res.province
+                                app.city = res.city
+                                app.area = res.area
+                                app.town = res.town
+                                app.address = res.address
                                 //  请求运费
                                 if (addressId != null && addressId != undefined && addressId != '') {
                                     $.ajax({
@@ -212,13 +227,11 @@ $(function () {
                                                     if (res.err_msg == "get_brand_wcpay_request:ok") {
                                                         // 使用以上方式判断前端返回,微信团队郑重提示：
                                                         //res.err_msg将在用户支付成功后返回ok，但并不保证它绝对可靠。
-                                                        //创建订单
-                                                        console.log(app.orderIds)
                                                         $.getJSON("https://www.kuailelifegroup.com/qgl_admin/weixin/payOverOrder", {
                                                             "orderIds": JSON.stringify(app.orderIds),
                                                         }, (res) => {
                                                             if (res.status == 0) {
-                                                                //  支付成功后跳转
+                                                                //支付成功后跳转
                                                                 window.location.href = "waitDeliver.html"
                                                             } else {
                                                                 $.toast('请求失败请稍后', 'text')
@@ -286,7 +299,6 @@ $(function () {
                                                     if (res.err_msg == "get_brand_wcpay_request:ok") {
                                                         //使用以上方式判断前端返回,微信团队郑重提示：
                                                         //res.err_msg将在用户支付成功后返回ok，但并不保证它绝对可靠。
-                                                        //创建订单
                                                         $.getJSON("https://www.kuailelifegroup.com/qgl_admin/weixin/payOverOrder", {
                                                             "orderIds": JSON.stringify(app.orderIds),
                                                         }, (res) => {

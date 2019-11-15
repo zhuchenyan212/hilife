@@ -53,23 +53,33 @@ $(function () {
                         $.toast('请求失败请稍后', "text")
                     }
                 })
-                //请求商品列表信息
-                $.getJSON("https://www.kuailelifegroup.com/qgl_admin/weixin/areaGoodsList", {
-                    'type': 5,
-                    'sort': 0,
-                    'ad': 1
-                }, (res) => {
-                    if (res.status == 0) {
-                        app.goodsList = res.goodsList
-                    } else {
-                        $.toast('请求失败请稍后', 'text')
-                    }
-                })
                 // 首页新增会员区和商品区
                 $.getJSON("https://www.kuailelifegroup.com/qgl_admin/weixin/mainPageGoods", {}, (res) => {
                     if (res.status == 0) {
                         app.goodsArea = res.goodsArea
-                        app.vipArea = res.vipArea
+                        // app.vipArea = res.vipArea
+                        //请求商品列表信息
+                        $.getJSON("https://www.kuailelifegroup.com/qgl_admin/weixin/areaGoodsList", {
+                            'type': 5,
+                            'sort': 0,
+                            'ad': 1
+                        }, (res) => {
+                            if (res.status == 0) {
+                                app.goodsList = res.goodsList
+                            } else {
+                                $.toast('请求失败请稍后', 'text')
+                            }
+                        })
+                        var indexheight = localStorage.getItem("indexheight")
+                        if (indexheight > 0) {
+                            var hit = indexheight - 20
+                            window.onload = setTimeout(function () {
+                                window.scrollTo(0, hit);  //修改500为指定高度
+                            }, 1000);
+                            window.onload = setTimeout(function () {
+                                localStorage.setItem("indexheight", 0)
+                            }, 2000);
+                        }
                     } else {
                         $.toast('请求失败请稍后', "text")
                     }
@@ -87,12 +97,16 @@ $(function () {
                     }
                 })
             },
-            clickThis(e) {
+            clickThis() {
                 $('.grid')[0].href = 'tehui.html'
                 $('.grid')[1].href = 'product.html'
                 $('.grid')[2].href = 'member.html'
                 $('.grid')[3].href = 'codeShop.html'
             },
+            getheight(event) {
+                console.log(event.currentTarget.offsetTop)
+                localStorage.setItem("indexheight", event.currentTarget.offsetTop)
+            }
         }
     })
 })
